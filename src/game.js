@@ -1,6 +1,7 @@
 //game.js
 
 import Tile from './tile';
+import World from './world';
 
 /** @class Game
   * Represents a gather game
