@@ -1,8 +1,5 @@
 //game.js
 
-import Paddle from './paddle';
-import Brick from './brick';
-import Ball from './ball';
 
 /** @class Game
   * Represents a snake game
@@ -12,13 +9,13 @@ export default class Game{
 		this.over=false;
 		//Create the back buffer canvas
 		this.backBufferCanvas = document.createElement('canvas');
-		this.backBufferCanvas.width = 300;
-		this.backBufferCanvas.height = 400;
+		this.backBufferCanvas.width = 500;
+		this.backBufferCanvas.height = 500;
 		this.backBufferContext = this.backBufferCanvas.getContext('2d');
 		// Create the screen buffer canvas
 		this.screenBufferCanvas = document.createElement('canvas');
-		this.screenBufferCanvas.width = 300;
-		this.screenBufferCanvas.height = 400;
+		this.screenBufferCanvas.width = 500;
+		this.screenBufferCanvas.height = 500;
 		document.body.appendChild(this.screenBufferCanvas);
 		this.screenBufferContext = this.screenBufferCanvas.getContext('2d');
 		// Bind class functions
@@ -55,8 +52,8 @@ export default class Game{
 	
 	render(){
 		//Clear the canvas
-		this.backBufferContext.clearRect(0,0,300,400);
-		this.screenBufferContext.clearRect(0,0,300,400);
+		this.backBufferContext.clearRect(0,0,500,500);
+		this.screenBufferContext.clearRect(0,0,500,500);
 		
 
 		this.screenBufferContext.drawImage(this.backBufferCanvas,0,0);
