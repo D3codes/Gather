@@ -1,14 +1,23 @@
 //game.js
 import Player from './player'
+import Tile from './tile';
 
 /** @class Game
-  * Represents a snake game
+  * Represents a gather game
   */
 export default class Game{
 	constructor(){
 		this.over=false;
 
 		this.player = new Player()
+
+		//create tiles
+		this.tiles=[];
+		for (let i=0;i<600;i+=40){
+			for (let j=0;j<600;j+=40){
+				this.tiles.push(new Tile(i,j));
+			}
+		}
 		//Create the back buffer canvas
 		this.backBufferCanvas = document.createElement('canvas');
 		this.backBufferCanvas.width = 600;
@@ -36,9 +45,13 @@ export default class Game{
 		//Clear the canvas
 		this.backBufferContext.clearRect(0,0,600,600);
 		this.screenBufferContext.clearRect(0,0,600,600);
+		//render tiles
+		this.tiles.forEach((tile)=>{
+			tile.render(this.backBufferContext);
+		});
 
 		this.player.render(this.backBufferContext)
-		
+
 		this.screenBufferContext.drawImage(this.backBufferCanvas,0,0);
 	}
 
