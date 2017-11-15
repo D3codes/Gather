@@ -10,20 +10,20 @@ export default class World{
 			}
 			this.grid.push(row);
 		}
-		
+
 		//bind class functions
 		this.update.bind(this);
 		this.render.bind(this);
 	}
-	
-	this.update(){
-		
+
+	update(){
+
 	}
-	
-	this.render(ctx, playerPosition){
+
+	render(ctx, playerPosition){
 		for (let x=playerPosition.x-8;x<=playerPosition.y+8;x++){
 			for (let y=playerPosition.y-8;y<=playerPosition.y+8;y++){
-				
+
 			}
 		}
 	}

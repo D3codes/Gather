@@ -29,16 +29,16 @@ export default class Player {
     event.preventDefault()
     switch(event.key) {
       case 'a':
-        if(this.x > 0) this.x-=20
+        if(this.x > 0) this.x-=40
         break
       case 'd':
-        if(this.x < 580) this.x+=20
+        if(this.x < 560) this.x+=40
         break
       case 'w':
-        if(this.y > 0) this.y-=20
+        if(this.y > 0) this.y-=40
         break
       case 's':
-        if(this.y < 580) this.y+=20
+        if(this.y < 560) this.y+=40
         break
 
       case 'e':
