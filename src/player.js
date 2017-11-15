@@ -4,11 +4,12 @@ export default class Player {
     this.y = 0
 
     this.fuel = 100
+    this.maxFuel = 100
     this.drillStrength = 10
     this.health = 100
     this.maxStorage = 10
 
-    this.loopCounter = 1000
+    this.loopCounter = 500
 
     this.handleKeyDown = this.handleKeyDown.bind(this)
     window.addEventListener('keydown', this.handleKeyDown)
@@ -18,7 +19,7 @@ export default class Player {
     this.loopCounter--
     if(this.loopCounter <= 0) {
       this.fuel--
-      this.loopCounter = 1000
+      this.loopCounter = 500
     }
     if(this.fuel < 0) this.health = 0
   }

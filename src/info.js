@@ -21,7 +21,7 @@ export default class Info {
     ctx.fillText('Fuel: ' + this.player.fuel, 10, 80)
     ctx.fillRect(10, 90, 180, 25)
     ctx.fillStyle = '#B57E1D'
-    ctx.fillRect(10, 90, (this.player.fuel*180)/100, 25)
+    ctx.fillRect(10, 90, (this.player.fuel*180)/this.player.maxFuel, 25)
 
     ctx.fillStyle = 'white'
     ctx.fillText('Drill Strength: ' + this.player.drillStrength, 10, 135)
