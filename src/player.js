@@ -8,12 +8,18 @@ export default class Player {
     this.health = 100
     this.maxStorage = 10
 
+    this.loopCounter = 1000
+
     this.handleKeyDown = this.handleKeyDown.bind(this)
     window.addEventListener('keydown', this.handleKeyDown)
   }
 
   update() {
-    this.fuel--
+    this.loopCounter--
+    if(this.loopCounter <= 0) {
+      this.fuel--
+      this.loopCounter = 1000
+    }
     if(this.fuel < 0) this.health = 0
   }
 
@@ -27,7 +33,6 @@ export default class Player {
 
   handleKeyDown(event) {
     event.preventDefault()
-    console.log(event.key)
     switch(event.key) {
       case 'a':
       case 'ArrowLeft':
