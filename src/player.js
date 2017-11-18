@@ -5,9 +5,13 @@ export default class Player {
 
     this.fuel = 100
     this.maxFuel = 100
+
     this.drillStrength = 10
+
     this.health = 100
+
     this.maxStorage = 10
+    this.inventory = []
 
     this.loopCounter = 500
 

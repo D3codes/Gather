@@ -18,7 +18,7 @@ export default class Info {
     ctx.fillRect(10, 35, (this.player.health*180)/100, 25)
 
     ctx.fillStyle = 'white'
-    ctx.fillText('Fuel: ' + this.player.fuel, 10, 80)
+    ctx.fillText('Fuel: ' + this.player.fuel + '/' + this.player.maxFuel, 10, 80)
     ctx.fillRect(10, 90, 180, 25)
     ctx.fillStyle = '#B57E1D'
     ctx.fillRect(10, 90, (this.player.fuel*180)/this.player.maxFuel, 25)
@@ -26,7 +26,7 @@ export default class Info {
     ctx.fillStyle = 'white'
     ctx.fillText('Drill Strength: ' + this.player.drillStrength, 10, 135)
 
-    ctx.fillText('Max Storage: ' + this.player.maxStorage, 10, 160)
+    ctx.fillText('Inventory: ' + this.player.inventory.length + '/' + this.player.maxStorage, 10, 160)
     var y = 170
     var x = 10
     for(var i = 0; i < this.player.maxStorage; i++) {
