@@ -1,7 +1,7 @@
 export default class Player {
   constructor() {
-    this.x = 15;
-    this.y = 15;
+    this.x = 150;
+    this.y = 150;
 
     this.fuel = 100
     this.drillStrength = 10
@@ -13,7 +13,7 @@ export default class Player {
   }
 
   update() {
-    this.fuel--
+    this.fuel--;
     if(this.fuel < 0) this.health = 0
   }
 
@@ -35,19 +35,19 @@ export default class Player {
     switch(event.key) {
       case 'a':
       case 'ArrowLeft':
-        if(this.x > 0) this.x-=1
+        if(this.x > 7) this.x-=1
         break
       case 'd':
       case 'ArrowRight':
-        if(this.x < 560) this.x+=1
+        if(this.x < 291) this.x+=1
         break
       case 'w':
       case 'ArrowUp':
-        if(this.y > 0) this.y-=1
+        if(this.y > 7) this.y-=1
         break
       case 's':
       case 'ArrowDown':
-        if(this.y < 560) this.y+=1
+        if(this.y < 291) this.y+=1
         break
 
       case 'e':

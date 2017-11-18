@@ -5,12 +5,18 @@ export default class World{
 		//grid represents the 2d martix of the world of tiles
 		//tile types are represented as integers
 		this.grid=[];
-		for (let y=0;y<100;y++){
+		for (let y=0;y<300;y++){
 			let row=[];
-			for (let x=0;x<100;x++){
+			for (let x=0;x<300;x++){
 				row.push(new Tile());
 			}
 			this.grid.push(row);
+		}
+		//build spawn area
+		for (let x=148;x<153;x++){
+			for (let y=148;y<153;y++){
+				this.grid[x][y].setType('empty');
+			}
 		}
 
 		//bind class functions
