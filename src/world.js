@@ -1,3 +1,5 @@
+import Tile from './tile';
+
 export default class World{
 	constructor(){
 		//grid represents the 2d martix of the world of tiles
@@ -6,7 +8,7 @@ export default class World{
 		for (let y=0;y<100;y++){
 			let row=[];
 			for (let x=0;x<100;x++){
-				this.row.push(1);
+				row.push(new Tile());
 			}
 			this.grid.push(row);
 		}
@@ -21,9 +23,9 @@ export default class World{
 	}
 
 	render(ctx, playerPosition){
-		for (let x=playerPosition.x-8;x<=playerPosition.y+8;x++){
-			for (let y=playerPosition.y-8;y<=playerPosition.y+8;y++){
-
+		for (let x=0;x<16;x++){
+			for (let y=0;y<16;y++){
+				this.grid[playerPosition.x-7+x][playerPosition.y-7+y].render(ctx,x,y);
 			}
 		}
 	}

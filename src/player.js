@@ -1,7 +1,7 @@
 export default class Player {
   constructor() {
-    this.x = 0
-    this.y = 0
+    this.x = 15;
+    this.y = 15;
 
     this.fuel = 100
     this.drillStrength = 10
@@ -20,9 +20,13 @@ export default class Player {
   render(ctx) {
     ctx.save()
     ctx.fillStyle = 'black'
-    ctx.fillRect(this.x+2, this.y+2, 15, 15)
+    ctx.fillRect(293, 293, 15, 15)
 
     ctx.restore()
+  }
+  
+  getPosition(){
+	  return {x:this.x,y:this.y}
   }
 
   handleKeyDown(event) {
@@ -31,19 +35,19 @@ export default class Player {
     switch(event.key) {
       case 'a':
       case 'ArrowLeft':
-        if(this.x > 0) this.x-=40
+        if(this.x > 0) this.x-=1
         break
       case 'd':
       case 'ArrowRight':
-        if(this.x < 560) this.x+=40
+        if(this.x < 560) this.x+=1
         break
       case 'w':
       case 'ArrowUp':
-        if(this.y > 0) this.y-=40
+        if(this.y > 0) this.y-=1
         break
       case 's':
       case 'ArrowDown':
-        if(this.y < 560) this.y+=40
+        if(this.y < 560) this.y+=1
         break
 
       case 'e':

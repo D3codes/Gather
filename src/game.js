@@ -10,6 +10,7 @@ export default class Game{
 	constructor(){
 		this.over=false;
 
+		this.world=new World();
 		this.player = new Player()
 
 		//create tiles
@@ -47,9 +48,8 @@ export default class Game{
 		this.backBufferContext.clearRect(0,0,600,600);
 		this.screenBufferContext.clearRect(0,0,600,600);
 		//render tiles
-		this.tiles.forEach((tile)=>{
-			tile.render(this.backBufferContext);
-		});
+		
+		this.world.render(this.backBufferContext, this.player.getPosition());
 
 		this.player.render(this.backBufferContext)
 

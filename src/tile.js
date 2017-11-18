@@ -1,7 +1,6 @@
 export default class Tile{
-	constructor(x,y){
-		this.x=x;
-		this.y=y;
+	constructor(){
+		this.color=Math.random();
 		
 		//bind class methods
 		this.update=this.update.bind(this);
@@ -12,8 +11,9 @@ export default class Tile{
 		
 	}
 	
-	render(ctx){
-		ctx.fillStyle='grey'
-		ctx.fillRect(this.x+1,this.y+1,38,38);
+	render(ctx,x,y){
+		if (this.color<.5)	ctx.fillStyle='grey';
+		else ctx.fillStyle='red';
+		ctx.fillRect(x*40,y*40,38,38);
 	}
 }
