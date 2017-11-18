@@ -4,16 +4,27 @@ export default class Player {
     this.y = 150;
 
     this.fuel = 100
+    this.maxFuel = 100
+
     this.drillStrength = 10
+
     this.health = 100
+
     this.maxStorage = 10
+    this.inventory = []
+
+    this.loopCounter = 500
 
     this.handleKeyDown = this.handleKeyDown.bind(this)
     window.addEventListener('keydown', this.handleKeyDown)
   }
 
   update() {
-    this.fuel--;
+    this.loopCounter--
+    if(this.loopCounter <= 0) {
+      this.fuel--
+      this.loopCounter = 500
+    }
     if(this.fuel < 0) this.health = 0
   }
 
@@ -24,14 +35,13 @@ export default class Player {
 
     ctx.restore()
   }
-  
+
   getPosition(){
 	  return {x:this.x,y:this.y}
   }
 
   handleKeyDown(event) {
     event.preventDefault()
-    console.log(event.key)
     switch(event.key) {
       case 'a':
       case 'ArrowLeft':
