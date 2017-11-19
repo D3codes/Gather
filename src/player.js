@@ -13,7 +13,7 @@ export default class Player {
 
     this.maxStorage = 10
 	this.usedStorage=0
-    this.inventory = {wood:0, ore:0}
+    this.inventory = {wood:0, iron:0, bronze:0,silver:0,gold:0,platinum:0,amethyst:0,sapphire:0,emerald:0,ruby:0,diamond:0}
 
 
     this.handleKeyDown = this.handleKeyDown.bind(this)
@@ -24,11 +24,11 @@ export default class Player {
 		if(updateInfo.type==='trade'){
 			this.money+=updateInfo.income;
 			this.inventory.wood=0;
-			this.inventory.ore=0;
+			this.inventory.iron=0;
 			this.usedStorage=0;
 		}
 		else if (updateInfo.type!=='empty' && updateInfo.type!=='rock'){
-			this.inventory[updateInfo.type]+=1;
+			this.inventory[updateInfo.type.split('-')[1]]+=1;
 			this.usedStorage+=1;
 		}
 	}

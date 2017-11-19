@@ -28,6 +28,7 @@ export default class Tile{
 				ctx.fillStyle='#8B6F48'
 				ctx.fillRect(x*40,y*40,38,38);
 				let color=''
+				//place holders until sprites
 				switch(split[1]){
 					case 'iron':
 						color='#414141';
@@ -74,6 +75,10 @@ export default class Tile{
 			case 'wood':
 				ctx.fillStyle='green'
 				ctx.fillRect(x*40,y*40,38,38);
+					switch (split[1]){
+						case 'wood':
+							break;
+					}
 				break;
 			case 'trade':
 				ctx.fillStyle='#393433'

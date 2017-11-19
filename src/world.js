@@ -14,9 +14,8 @@ export default class World{
 					type='rock';
 				}
 				else if(generator<.9){
-					if (generator<.81) type='ore-iron'
-					else if (generator<.82) type ='ore-bronze'
-					else if (generator<.83) type = 'ore-silver'
+					if (generator<.82) type='ore-iron'
+					else if (generator<.83) type ='ore-bronze'
 					else if (generator<.84) type = 'ore-silver'
 					else if (generator<.85) type = 'ore-gold'
 					else if (generator<.86) type = 'ore-platinum'
@@ -28,7 +27,7 @@ export default class World{
 					else type = 'ore-alexandrite'
 				}
 				else{
-					type='wood'
+					type='wood-wood'
 				}
 				row.push(new Tile(type));
 			}
@@ -51,7 +50,7 @@ export default class World{
 	sellItems(inventory){
 		let total=0;
 		total+=inventory.wood*10;
-		total+=inventory.ore*50;
+		total+=inventory.iron*50;
 		
 		return total;
 	}
