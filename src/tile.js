@@ -1,11 +1,7 @@
 export default class Tile{
-	constructor(){
-		let generator=Math.random();
-		this.color=Math.random();
+	constructor(type){
 		//tile types are empty, rock, wood, and ore.
-		if (generator<.8) this.type='rock';
-		else if (generator<.9) this.type='ore';
-		else this.type='wood';
+		this.type=type;
 		
 		//bind class methods
 		this.update=this.update.bind(this);
@@ -20,21 +16,34 @@ export default class Tile{
 		switch(this.type){
 			case 'empty':
 				ctx.fillStyle='gray'
+				ctx.fillRect(x*40,y*40,38,38);
 				break;
 			case 'rock':
 				ctx.fillStyle='brown'
+				ctx.fillRect(x*40,y*40,38,38);
 				break;
 			case 'ore':
 				ctx.fillStyle='yellow'
+				ctx.fillRect(x*40,y*40,38,38);
 				break;
 			case 'wood':
 				ctx.fillStyle='green'
+				ctx.fillRect(x*40,y*40,38,38);
 				break;
+			case 'trade':
+				ctx.fillStyle='#393433'
+				ctx.fillRect(x*40,y*40,38,38);
+				ctx.fillStyle='white';
+				ctx.fillText('T', x*40+14, y*40+20);
 		}
-		ctx.fillRect(x*40,y*40,38,38);
+		
 	}
 	
 	setType(type){
 		this.type=type;
+	}
+	
+	getInfo(){
+		return {type:this.type}
 	}
 }

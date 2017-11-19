@@ -5,28 +5,33 @@ export default class Player {
 
     this.fuel = 100
     this.maxFuel = 100
+	this.money=0;
 
     this.drillStrength = 10
 
     this.health = 100
 
     this.maxStorage = 10
-    this.inventory = []
+	this.usedStorage=0
+    this.inventory = {wood:0, ore:0}
 
-    this.loopCounter = 500
 
     this.handleKeyDown = this.handleKeyDown.bind(this)
     window.addEventListener('keydown', this.handleKeyDown)
   }
 
-  update() {
-    this.loopCounter--
-    if(this.loopCounter <= 0) {
-      this.fuel--
-      this.loopCounter = 500
-    }
-    if(this.fuel < 0) this.health = 0
-  }
+	update(updateInfo) {
+		if(updateInfo.type==='trade'){
+			this.money+=updateInfo.income;
+			this.inventory.wood=0;
+			this.inventory.ore=0;
+			this.usedStorage=0;
+		}
+		else if (updateInfo.type!=='empty' && updateInfo.type!=='rock'){
+			this.inventory[updateInfo.type]+=1;
+			this.usedStorage+=1;
+		}
+	}
 
   render(ctx) {
     ctx.save()
@@ -34,6 +39,10 @@ export default class Player {
     ctx.fillRect(293, 293, 15, 15)
 
     ctx.restore()
+  }
+  
+  getInfo(){
+	  return {fuel:this.fuel, maxFuel:this.maxFuel, drillStrength:this.drillStrength, health:this.health, inventory:this.inventory, money:this.money, usedStorage:this.usedStorage, maxStorage:this.maxStorage};
   }
 
   getPosition(){

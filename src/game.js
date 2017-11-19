@@ -48,7 +48,8 @@ export default class Game{
 	}
 
 	update(){
-		this.player.update()
+		let playerUpdate=this.world.update(this.player.getPosition(), this.player.getInfo());
+		this.player.update(playerUpdate)
 		this.info.update()
 	}
 
@@ -62,7 +63,7 @@ export default class Game{
 		this.world.render(this.backBufferContext, this.player.getPosition());
 
 		this.player.render(this.backBufferContext)
-		this.info.render(this.infoBufferContext)
+		this.info.render(this.infoBufferContext, this.player.getInfo())
 
 		this.screenBufferContext.drawImage(this.backBufferCanvas,0,0);
 		this.screenBufferContext.drawImage(this.infoBufferCanvas,600,0)

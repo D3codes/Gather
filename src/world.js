@@ -8,7 +8,18 @@ export default class World{
 		for (let y=0;y<300;y++){
 			let row=[];
 			for (let x=0;x<300;x++){
-				row.push(new Tile());
+				let generator=Math.random(type);
+				let type='';
+				if (generator<.8){
+					type='rock';
+				}
+				else if(generator<.9){
+					type='ore';
+				}
+				else{
+					type='wood'
+				}
+				row.push(new Tile(type));
 			}
 			this.grid.push(row);
 		}
@@ -18,14 +29,33 @@ export default class World{
 				this.grid[x][y].setType('empty');
 			}
 		}
+		//place special tiles
+		this.grid[151][150].setType('trade');
 
 		//bind class functions
 		this.update.bind(this);
 		this.render.bind(this);
 	}
+	
+	sellItems(inventory){
+		let total=0;
+		total+=inventory.wood*10;
+		total+=inventory.ore*50;
+		
+		return total;
+	}
 
-	update(){
-
+	update(playerPosition, playerInfo){
+		let type=this.grid[playerPosition.x][playerPosition.y].getInfo().type;
+		if (type!=="empty"){
+			if(type==="trade"){
+				return {type:'trade', income:this.sellItems(playerInfo.inventory)};
+			}
+			else{
+				this.grid[playerPosition.x][playerPosition.y].setType('empty');
+			}
+		}
+		return {type:type};
 	}
 
 	render(ctx, playerPosition){
