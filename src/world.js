@@ -14,7 +14,18 @@ export default class World{
 					type='rock';
 				}
 				else if(generator<.9){
-					type='ore';
+					if (generator<.81) type='ore-iron'
+					else if (generator<.82) type ='ore-bronze'
+					else if (generator<.83) type = 'ore-silver'
+					else if (generator<.84) type = 'ore-silver'
+					else if (generator<.85) type = 'ore-gold'
+					else if (generator<.86) type = 'ore-platinum'
+					else if (generator<.87) type = 'ore-amethyst'
+					else if (generator<.88) type = 'ore-sapphire'
+					else if (generator<.885) type = 'ore-emerald'
+					else if (generator<.89) type = 'ore-ruby'
+					else if (generator<.895) type = 'ore-diamond'
+					else type = 'ore-alexandrite'
 				}
 				else{
 					type='wood'

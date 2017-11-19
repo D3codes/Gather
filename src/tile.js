@@ -13,7 +13,8 @@ export default class Tile{
 	}
 	
 	render(ctx,x,y){
-		switch(this.type){
+		let split=this.type.split('-');
+		switch(split[0]){
 			case 'empty':
 				ctx.fillStyle='gray'
 				ctx.fillRect(x*40,y*40,38,38);
@@ -23,8 +24,52 @@ export default class Tile{
 				ctx.fillRect(x*40,y*40,38,38);
 				break;
 			case 'ore':
-				ctx.fillStyle='yellow'
+				console.log(split[1]);
+				ctx.fillStyle='#8B6F48'
 				ctx.fillRect(x*40,y*40,38,38);
+				let color=''
+				switch(split[1]){
+					case 'iron':
+						color='#414141';
+						break;
+					case 'bronze':
+						color='#A57025';
+						break;
+					case 'silver':
+						color='#A4A29F';
+						break;
+					case 'gold':
+						color='#AA9634';
+						break;
+					case 'platinum':
+						color='#DEDEDE';
+						break;
+					case 'amethyst':
+						color='#AB6FCD';
+						break;
+					case 'sapphire':
+						color='#0A5CB4';
+						break;
+					case 'emerald':
+						color='#44B26B';
+						break;
+					case 'ruby':
+						color='#E80000';
+						break;
+					case 'diamond':
+						color='#9EEFFF';
+						break;
+					case 'alexandrite':
+						//blue+purple in final
+						color='#281172';
+						break;
+				}
+				ctx.strokeStyle=color;
+				ctx.fillStyle=color;
+				ctx.beginPath();
+				ctx.arc(x*40+19,y*40+19,15,0,2*Math.PI);
+				ctx.fill();
+				ctx.stroke();
 				break;
 			case 'wood':
 				ctx.fillStyle='green'
