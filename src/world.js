@@ -42,6 +42,7 @@ export default class World{
 		//place special tiles
 		this.grid[151][150].setType('trade');
 		this.grid[151][151].setType('fuel')
+		this.grid[149][150].setType('repair')
 
 		//bind class functions
 		this.update.bind(this);
@@ -59,9 +60,17 @@ export default class World{
 	refuel(playerInfo) {
 		let pricePerGallon = 2
 		let amountOfFuelNeeded = playerInfo.maxFuel - playerInfo.fuel
-		let amountOfFuelAfforded = playerInfo.money/pricePerGallon
+		let amountOfFuelAfforded = Math.floor(playerInfo.money/pricePerGallon)
 		if(amountOfFuelAfforded > amountOfFuelNeeded) return amountOfFuelNeeded
 		else return amountOfFuelAfforded
+	}
+
+	repair(playerInfo) {
+		let pricePerPercent = 10
+		let percentOfRepairsNeeded = 100 - playerInfo.health
+		let amountOfRepairsAfforded = Math.floor(playerInfo.money/pricePerPercent)
+		if(amountOfRepairsAfforded > percentOfRepairsNeeded) return percentOfRepairsNeeded
+		else return amountOfRepairsAfforded
 	}
 
 	update(playerPosition, playerInfo){
@@ -72,6 +81,9 @@ export default class World{
 			}
 			if(type==='fuel'){
 				return {type:'fuel', amount:this.refuel(playerInfo)}
+			}
+			if(type === 'repair') {
+				return {type:'repair', amount: this.repair(playerInfo)}
 			}
 			else{
 				this.grid[playerPosition.x][playerPosition.y].setType('empty');

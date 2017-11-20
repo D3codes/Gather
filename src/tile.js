@@ -93,6 +93,13 @@ export default class Tile{
 			ctx.fillStyle='white';
 			ctx.fillText('F', x*40+14, y*40+20);
 			break
+
+			case 'repair':
+			ctx.fillStyle='#393433'
+			ctx.fillRect(x*40,y*40,38,38);
+			ctx.fillStyle='white';
+			ctx.fillText('R', x*40+14, y*40+20);
+			break
 		}
 
 	}
