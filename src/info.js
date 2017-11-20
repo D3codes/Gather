@@ -1,19 +1,19 @@
 export default class Info {
   constructor() {
-    
+
   }
 
   update() {
-	  
+
   }
 
   render(ctx, player) {
     ctx.font = '15px Verdana'
     ctx.fillStyle = '#000080'
     ctx.fillRect(0,0,200,600)
-	
+
 	ctx.fillStyle = 'white'
-    ctx.fillText('Money: ' + player.money, 10, 25)
+    ctx.fillText('Money: $' + player.money, 10, 25)
 
     ctx.fillStyle = 'white'
     ctx.fillText('Health: ' + player.health, 10, 45)
@@ -41,5 +41,7 @@ export default class Info {
       ctx.fillRect(x, y, 50, 50)
       x+=60
     }
+
+    ctx.fillText('Position: ' + player.x + ', ' + player.y, 10, 590)
   }
 }

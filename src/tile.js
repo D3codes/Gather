@@ -2,16 +2,16 @@ export default class Tile{
 	constructor(type){
 		//tile types are empty, rock, wood, and ore.
 		this.type=type;
-		
+
 		//bind class methods
 		this.update=this.update.bind(this);
 		this.render=this.render.bind(this);
 	}
-	
+
 	update(){
-		
+
 	}
-	
+
 	render(ctx,x,y){
 		let split=this.type.split('-');
 		switch(split[0]){
@@ -85,14 +85,22 @@ export default class Tile{
 				ctx.fillRect(x*40,y*40,38,38);
 				ctx.fillStyle='white';
 				ctx.fillText('T', x*40+14, y*40+20);
+				break
+
+			case 'fuel':
+			ctx.fillStyle='#393433'
+			ctx.fillRect(x*40,y*40,38,38);
+			ctx.fillStyle='white';
+			ctx.fillText('F', x*40+14, y*40+20);
+			break
 		}
-		
+
 	}
-	
+
 	setType(type){
 		this.type=type;
 	}
-	
+
 	getInfo(){
 		return {type:this.type}
 	}

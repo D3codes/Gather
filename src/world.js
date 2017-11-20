@@ -41,18 +41,27 @@ export default class World{
 		}
 		//place special tiles
 		this.grid[151][150].setType('trade');
+		this.grid[151][151].setType('fuel')
 
 		//bind class functions
 		this.update.bind(this);
 		this.render.bind(this);
 	}
-	
+
 	sellItems(inventory){
 		let total=0;
 		total+=inventory.wood*10;
 		total+=inventory.iron*50;
-		
+
 		return total;
+	}
+
+	refuel(playerInfo) {
+		let pricePerGallon = 2
+		let amountOfFuelNeeded = playerInfo.maxFuel - playerInfo.fuel
+		let amountOfFuelAfforded = playerInfo.money/pricePerGallon
+		if(amountOfFuelAfforded > amountOfFuelNeeded) return amountOfFuelNeeded
+		else return amountOfFuelAfforded
 	}
 
 	update(playerPosition, playerInfo){
@@ -60,6 +69,9 @@ export default class World{
 		if (type!=="empty"){
 			if(type==="trade"){
 				return {type:'trade', income:this.sellItems(playerInfo.inventory)};
+			}
+			if(type==='fuel'){
+				return {type:'fuel', amount:this.refuel(playerInfo)}
 			}
 			else{
 				this.grid[playerPosition.x][playerPosition.y].setType('empty');
