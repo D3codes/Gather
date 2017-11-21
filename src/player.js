@@ -59,18 +59,19 @@ export default class Player {
       this.money -= updateInfo.amount*10
     }
 		else if (updateInfo.type!=='empty' && updateInfo.type!=='rock'){
-			this.inventory[updateInfo.type.split('-')[1]]+=1;
-			this.usedStorage+=1;
+			if(this.usedStorage < this.maxStorage) {
+        this.inventory[updateInfo.type.split('-')[1]]+=1;
+			  this.usedStorage+=1;
+      }
 		}
 
     this.fuelCounter++
     if(this.fuelCounter >= this.idleFuelUsage) {
       this.fuelCounter = 0
-      this.fuel--
+      if(this.fuel !== 0) this.fuel--
     }
 
     if(this.fuel <= 0) this.health = 0
-
     if(this.health <= 0) {
       //TODO: death
     }
