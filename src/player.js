@@ -63,6 +63,9 @@ export default class Player {
     else if(updateInfo.type === 'rock' || updateInfo.type === 'wood-wood') {
       this.fuel--
     }
+    else if(updateInfo.type === 'upgrade') {
+      //TODO: upgrade
+    }
 		else if (updateInfo.type!=='empty'){
       this.fuel -= 2
 			if(this.usedStorage < this.maxStorage) {
