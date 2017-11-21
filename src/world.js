@@ -63,6 +63,7 @@ export default class World{
 		total+=inventory.emerald*120
 		total+=inventory.ruby*120
 		total+=inventory.diamond*200
+		total+=inventory.alexandrite*250
 
 		return total;
 	}

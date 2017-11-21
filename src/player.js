@@ -49,6 +49,7 @@ export default class Player {
       this.inventory.emerald=0
       this.inventory.ruby=0
       this.inventory.diamond=0
+      this.inventory.alexandrite=0
 			this.usedStorage=0;
 		}
     else if(updateInfo.type === 'fuel') {
@@ -59,7 +60,11 @@ export default class Player {
       this.health += updateInfo.amount
       this.money -= updateInfo.amount*10
     }
-		else if (updateInfo.type!=='empty' && updateInfo.type!=='rock'){
+    else if(updateInfo.type === 'rock' || updateInfo.type === 'wood-wood') {
+      this.fuel--
+    }
+		else if (updateInfo.type!=='empty'){
+      this.fuel -= 2
 			if(this.usedStorage < this.maxStorage) {
         this.inventory[updateInfo.type.split('-')[1]]+=1;
 			  this.usedStorage+=1;
@@ -111,18 +116,22 @@ export default class Player {
       case 'a':
       case 'ArrowLeft':
         if(this.x > 7) this.x-=1
+        this.fuel--
         break
       case 'd':
       case 'ArrowRight':
         if(this.x < 291) this.x+=1
+        this.fuel--
         break
       case 'w':
       case 'ArrowUp':
         if(this.y > 7) this.y-=1
+        this.fuel--
         break
       case 's':
       case 'ArrowDown':
         if(this.y < 291) this.y+=1
+        this.fuel--
         break
 
       case 'e':
