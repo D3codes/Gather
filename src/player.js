@@ -61,15 +61,18 @@ export default class Player {
       this.money -= updateInfo.amount*10
     }
     else if(updateInfo.type === 'rock') {
-      this.fuel--
+      if(this.fuel > 0) this.fuel--
     }
     else if(updateInfo.type === 'upgrade') {
       //TODO: upgrade
     }
 		else if (updateInfo.type!=='empty' && updateInfo.type !== 'rock'){
-      if(updateInfo.type === 'wood-wood') this.fuel--
-      else this.fuel -= 2
-      
+      if(updateInfo.type === 'wood-wood') if(this.fuel > 0) this.fuel--
+      else {
+        if(this.fuel > 1) this.fuel-=2
+        else if(this.fuel > 0) this.fuel--
+      }
+
 			if(this.usedStorage < this.maxStorage) {
         this.inventory[updateInfo.type.split('-')[1]]+=1;
 			  this.usedStorage+=1;
@@ -79,7 +82,7 @@ export default class Player {
     this.fuelCounter++
     if(this.fuelCounter >= this.idleFuelUsage) {
       this.fuelCounter = 0
-      if(this.fuel !== 0) this.fuel--
+      if(this.fuel > 0) this.fuel--
     }
 
     if(this.fuel <= 0) this.health = 0
@@ -117,26 +120,28 @@ export default class Player {
 
   handleKeyDown(event) {
     event.preventDefault()
+    if(this.health <= 0) return
+
     switch(event.key) {
       case 'a':
       case 'ArrowLeft':
         if(this.x > 7) this.x-=1
-        this.fuel--
+        if(this.fuel > 0) this.fuel--
         break
       case 'd':
       case 'ArrowRight':
         if(this.x < 291) this.x+=1
-        this.fuel--
+        if(this.fuel > 0) this.fuel--
         break
       case 'w':
       case 'ArrowUp':
         if(this.y > 7) this.y-=1
-        this.fuel--
+        if(this.fuel > 0) this.fuel--
         break
       case 's':
       case 'ArrowDown':
         if(this.y < 291) this.y+=1
-        this.fuel--
+        if(this.fuel > 0) this.fuel--
         break
 
       case 'e':

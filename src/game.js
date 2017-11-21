@@ -59,7 +59,7 @@ export default class Game{
 		this.infoBufferContext.clearRect(0,0,200,600)
 		this.screenBufferContext.clearRect(0,0,800,600);
 		//render tiles
-		
+
 		this.world.render(this.backBufferContext, this.player.getPosition());
 
 		this.player.render(this.backBufferContext)
