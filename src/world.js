@@ -53,6 +53,15 @@ export default class World{
 		let total=0;
 		total+=inventory.wood*10;
 		total+=inventory.iron*50;
+		total+=inventory.bronze*60
+		total+=inventory.silver*80
+		total+=inventory.gold*100
+		total+=inventory.platinum*150
+		total+=inventory.amethyst*20
+		total+=inventory.sapphire*120
+		total+=inventory.emerald*120
+		total+=inventory.ruby*120
+		total+=inventory.diamond*200
 
 		return total;
 	}

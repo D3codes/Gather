@@ -3,7 +3,7 @@ export default class Player {
     this.x = 150;
     this.y = 150;
 
-    this.fuel = 10
+    this.fuel = 100
     this.maxFuel = 100
     this.idleFuelUsage = 500
     this.fuelCounter = 0
@@ -39,6 +39,15 @@ export default class Player {
 			this.money+=updateInfo.income;
 			this.inventory.wood=0;
 			this.inventory.iron=0;
+      this.inventory.bronze=0
+      this.inventory.silver=0
+      this.inventory.gold=0
+      this.inventory.platinum=0
+      this.inventory.amethyst=0
+      this.inventory.sapphire=0
+      this.inventory.emerald=0
+      this.inventory.ruby=0
+      this.inventory.diamond=0
 			this.usedStorage=0;
 		}
     else if(updateInfo.type === 'fuel') {
