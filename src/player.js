@@ -27,7 +27,8 @@ export default class Player {
       sapphire:0,
       emerald:0,
       ruby:0,
-      diamond:0
+      diamond:0,
+      alexandrite:0
     }
 
     this.handleKeyDown = this.handleKeyDown.bind(this)

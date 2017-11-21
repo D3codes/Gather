@@ -31,155 +31,192 @@ export default class Info {
     ctx.fillText('Drill Strength: ' + player.drillStrength, 10, 155)
 
     ctx.fillText('Inventory: ' + player.usedStorage + '/' + player.maxStorage, 10, 180)
-    var y = 190
-    var x = 10
-    for(var i = 0; i < player.maxStorage; i++) {
-      if(x === 190) {
-        y += 60
-        x = 10
-      }
-      ctx.fillRect(x, y, 50, 50)
-      x+=60
-    }
-    let slot = 0
-    for(var i = 0; i < player.inventory.wood; i++) {
-        var coords = this.getXYForSlot(slot)
-        ctx.fillStyle = 'green'
-        ctx.fillRect(coords.x+10, coords.y+10, 30, 30)
-        slot++
-    }
-    for(var i = 0; i < player.inventory.iron; i++) {
-        coords = this.getXYForSlot(slot)
-        ctx.fillStyle = '#8B6F48'
-        ctx.fillRect(coords.x+10, coords.y+10, 30, 30)
-        ctx.fillStyle = '#414141'
-        ctx.strokeStyle = '#414141'
-        ctx.beginPath();
-				ctx.arc(coords.x+25,coords.y+25,10,0,2*Math.PI);
-				ctx.fill();
-				ctx.stroke();
-        slot++
-    }
-    for(var i = 0; i < player.inventory.bronze; i++) {
-        coords = this.getXYForSlot(slot)
-        ctx.fillStyle = '#8B6F48'
-        ctx.fillRect(coords.x+10, coords.y+10, 30, 30)
-        ctx.fillStyle = '#A57025'
-        ctx.strokeStyle = '#A57025'
-        ctx.beginPath();
-				ctx.arc(coords.x+25,coords.y+25,10,0,2*Math.PI);
-				ctx.fill();
-				ctx.stroke();
-        slot++
-    }
-    for(var i = 0; i < player.inventory.silver; i++) {
-        coords = this.getXYForSlot(slot)
-        ctx.fillStyle = '#8B6F48'
-        ctx.fillRect(coords.x+10, coords.y+10, 30, 30)
-        ctx.fillStyle = '#A4A29F'
-        ctx.strokeStyle = '#A4A29F'
-        ctx.beginPath();
-				ctx.arc(coords.x+25,coords.y+25,10,0,2*Math.PI);
-				ctx.fill();
-				ctx.stroke();
-        slot++
-    }
-    for(var i = 0; i < player.inventory.gold; i++) {
-        coords = this.getXYForSlot(slot)
-        ctx.fillStyle = '#8B6F48'
-        ctx.fillRect(coords.x+10, coords.y+10, 30, 30)
-        ctx.fillStyle = '#AA9634'
-        ctx.strokeStyle = '#AA9634'
-        ctx.beginPath();
-				ctx.arc(coords.x+25,coords.y+25,10,0,2*Math.PI);
-				ctx.fill();
-				ctx.stroke();
-        slot++
-    }
-    for(var i = 0; i < player.inventory.platinum; i++) {
-        coords = this.getXYForSlot(slot)
-        ctx.fillStyle = '#8B6F48'
-        ctx.fillRect(coords.x+10, coords.y+10, 30, 30)
-        ctx.fillStyle = '#DEDEDE'
-        ctx.strokeStyle = '#DEDEDE'
-        ctx.beginPath();
-				ctx.arc(coords.x+25,coords.y+25,10,0,2*Math.PI);
-				ctx.fill();
-				ctx.stroke();
-        slot++
-    }
-    for(var i = 0; i < player.inventory.amethyst; i++) {
-        coords = this.getXYForSlot(slot)
-        ctx.fillStyle = '#8B6F48'
-        ctx.fillRect(coords.x+10, coords.y+10, 30, 30)
-        ctx.fillStyle = '#AB6FCD'
-        ctx.strokeStyle = '#AB6FCD'
-        ctx.beginPath();
-				ctx.arc(coords.x+25,coords.y+25,10,0,2*Math.PI);
-				ctx.fill();
-				ctx.stroke();
-        slot++
-    }
-    for(var i = 0; i < player.inventory.sapphire; i++) {
-        coords = this.getXYForSlot(slot)
-        ctx.fillStyle = '#8B6F48'
-        ctx.fillRect(coords.x+10, coords.y+10, 30, 30)
-        ctx.fillStyle = '#0A5CB4'
-        ctx.strokeStyle = '#0A5CB4'
-        ctx.beginPath();
-				ctx.arc(coords.x+25,coords.y+25,10,0,2*Math.PI);
-				ctx.fill();
-				ctx.stroke();
-        slot++
-    }
-    for(var i = 0; i < player.inventory.emerald; i++) {
-        coords = this.getXYForSlot(slot)
-        ctx.fillStyle = '#8B6F48'
-        ctx.fillRect(coords.x+10, coords.y+10, 30, 30)
-        ctx.fillStyle = '#44B26B'
-        ctx.strokeStyle = '#44B26B'
-        ctx.beginPath();
-				ctx.arc(coords.x+25,coords.y+25,10,0,2*Math.PI);
-				ctx.fill();
-				ctx.stroke();
-        slot++
-    }
-    for(var i = 0; i < player.inventory.ruby; i++) {
-        coords = this.getXYForSlot(slot)
-        ctx.fillStyle = '#8B6F48'
-        ctx.fillRect(coords.x+10, coords.y+10, 30, 30)
-        ctx.fillStyle = '#E80000'
-        ctx.strokeStyle = '#E80000'
-        ctx.beginPath();
-				ctx.arc(coords.x+25,coords.y+25,10,0,2*Math.PI);
-				ctx.fill();
-				ctx.stroke();
-        slot++
-    }
-    for(var i = 0; i < player.inventory.diamond; i++) {
-        coords = this.getXYForSlot(slot)
-        ctx.fillStyle = '#8B6F48'
-        ctx.fillRect(coords.x+10, coords.y+10, 30, 30)
-        ctx.fillStyle = '#9EEFFF'
-        ctx.strokeStyle = '#9EEFFF'
-        ctx.beginPath();
-				ctx.arc(coords.x+25,coords.y+25,10,0,2*Math.PI);
-				ctx.fill();
-				ctx.stroke();
-        slot++
-    }
-    for(var i = 0; i < player.inventory.alexandrite; i++) {
-        coords = this.getXYForSlot(slot)
-        ctx.fillStyle = '#8B6F48'
-        ctx.fillRect(coords.x+10, coords.y+10, 30, 30)
-        ctx.fillStyle = '#281172'
-        ctx.strokeStyle = '#281172'
-        ctx.beginPath();
-				ctx.arc(coords.x+25,coords.y+25,10,0,2*Math.PI);
-				ctx.fill();
-				ctx.stroke();
-        slot++
-    }
+
+    ctx.fillStyle = 'white'
+    ctx.font = '10px Verdana'
+    ctx.fillText('Wood', 20, 205)
+    ctx.fillStyle = 'green'
+    ctx.fillRect(10, 210, 50, 50)
+    ctx.fillStyle = 'white'
+    ctx.font = '15px Verdana'
+    ctx.strokeStyle = 'black'
+    ctx.fillText(player.inventory.wood, 10+25, 210+45)
+
+    ctx.fillStyle = 'white'
+    ctx.font = '10px Verdana'
+    ctx.fillText('Iron', 90, 205)
+    ctx.fillStyle = '#8B6F48'
+    ctx.fillRect(75, 210, 50, 50)
+    ctx.fillStyle = '#414141'
+    ctx.strokeStyle = '#414141'
+    ctx.beginPath();
+    ctx.arc(75+25,210+25,10,0,2*Math.PI);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = 'white'
+    ctx.font = '15px Verdana'
+    ctx.strokeStyle = 'black'
+    ctx.fillText(player.inventory.iron, 75+25, 210+45)
+
+    ctx.fillStyle = 'white'
+    ctx.font = '10px Verdana'
+    ctx.fillText('Bronze', 148, 205)
+    ctx.fillStyle = '#8B6F48'
+    ctx.fillRect(140, 210, 50, 50)
+    ctx.fillStyle = '#A57025'
+    ctx.strokeStyle = '#A57025'
+    ctx.beginPath();
+    ctx.arc(140+25,210+25,10,0,2*Math.PI);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = 'white'
+    ctx.font = '15px Verdana'
+    ctx.strokeStyle = 'black'
+    ctx.fillText(player.inventory.bronze, 140+25, 210+45)
+
+    ctx.fillStyle = 'white'
+    ctx.font = '10px Verdana'
+    ctx.fillText('Silver', 20, 285)
+    ctx.fillStyle = '#8B6F48'
+    ctx.fillRect(10, 290, 50, 50)
+    ctx.fillStyle = '#A4A29F'
+    ctx.strokeStyle = '#A4A29F'
+    ctx.beginPath();
+    ctx.arc(10+25,290+25,10,0,2*Math.PI);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = 'white'
+    ctx.font = '15px Verdana'
+    ctx.strokeStyle = 'black'
+    ctx.fillText(player.inventory.silver, 10+25, 290+45)
+
+    ctx.fillStyle = 'white'
+    ctx.font = '10px Verdana'
+    ctx.fillText('Gold', 90, 285)
+    ctx.fillStyle = '#8B6F48'
+    ctx.fillRect(75, 290, 50, 50)
+    ctx.fillStyle = '#AA9634'
+    ctx.strokeStyle = '#AA9634'
+    ctx.beginPath();
+    ctx.arc(75+25,290+25,10,0,2*Math.PI);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = 'white'
+    ctx.font = '15px Verdana'
+    ctx.strokeStyle = 'black'
+    ctx.fillText(player.inventory.gold, 75+25, 290+45)
+
+    ctx.fillStyle = 'white'
+    ctx.font = '10px Verdana'
+    ctx.fillText('Platinum', 143, 285)
+    ctx.fillStyle = '#8B6F48'
+    ctx.fillRect(140, 290, 50, 50)
+    ctx.fillStyle = '#DEDEDE'
+    ctx.strokeStyle = '#DEDEDE'
+    ctx.beginPath();
+    ctx.arc(140+25,290+25,10,0,2*Math.PI);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = 'white'
+    ctx.font = '15px Verdana'
+    ctx.strokeStyle = 'black'
+    ctx.fillText(player.inventory.platinum, 140+25, 290+45)
+
+    ctx.fillStyle = 'white'
+    ctx.font = '10px Verdana'
+    ctx.fillText('Amethyst', 12, 365)
+    ctx.fillStyle = '#8B6F48'
+    ctx.fillRect(10, 370, 50, 50)
+    ctx.fillStyle = '#AB6FCD'
+    ctx.strokeStyle = '#AB6FCD'
+    ctx.beginPath();
+    ctx.arc(10+25,370+25,10,0,2*Math.PI);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = 'white'
+    ctx.font = '15px Verdana'
+    ctx.strokeStyle = 'black'
+    ctx.fillText(player.inventory.amethyst, 10+25, 370+45)
+
+    ctx.fillStyle = 'white'
+    ctx.font = '10px Verdana'
+    ctx.fillText('Sapphire', 77, 365)
+    ctx.fillStyle = '#8B6F48'
+    ctx.fillRect(75, 370, 50, 50)
+    ctx.fillStyle = '#0A5CB4'
+    ctx.strokeStyle = '#0A5CB4'
+    ctx.beginPath();
+    ctx.arc(75+25,370+25,10,0,2*Math.PI);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = 'white'
+    ctx.font = '15px Verdana'
+    ctx.strokeStyle = 'black'
+    ctx.fillText(player.inventory.sapphire, 75+25, 370+45)
+
+    ctx.fillStyle = 'white'
+    ctx.font = '10px Verdana'
+    ctx.fillText('Emerald', 145, 365)
+    ctx.fillStyle = '#8B6F48'
+    ctx.fillRect(140, 370, 50, 50)
+    ctx.fillStyle = '#44B26B'
+    ctx.strokeStyle = '#44B26B'
+    ctx.beginPath();
+    ctx.arc(140+25,370+25,10,0,2*Math.PI);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = 'white'
+    ctx.font = '15px Verdana'
+    ctx.strokeStyle = 'black'
+    ctx.fillText(player.inventory.emerald, 140+25, 370+45)
+
+    ctx.fillStyle = 'white'
+    ctx.font = '10px Verdana'
+    ctx.fillText('Ruby', 21, 445)
+    ctx.fillStyle = '#8B6F48'
+    ctx.fillRect(10, 450, 50, 50)
+    ctx.fillStyle = '#E80000'
+    ctx.strokeStyle = '#E80000'
+    ctx.beginPath();
+    ctx.arc(10+25,450+25,10,0,2*Math.PI);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = 'white'
+    ctx.font = '15px Verdana'
+    ctx.strokeStyle = 'black'
+    ctx.fillText(player.inventory.ruby, 10+25, 450+45)
+
+    ctx.fillStyle = 'white'
+    ctx.font = '10px Verdana'
+    ctx.fillText('Diamond', 77, 445)
+    ctx.fillStyle = '#8B6F48'
+    ctx.fillRect(75, 450, 50, 50)
+    ctx.fillStyle = '#9EEFFF'
+    ctx.strokeStyle = '#9EEFFF'
+    ctx.beginPath();
+    ctx.arc(75+25,450+25,10,0,2*Math.PI);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = 'white'
+    ctx.font = '15px Verdana'
+    ctx.strokeStyle = 'black'
+    ctx.fillText(player.inventory.diamond, 75+25, 450+45)
+
+    ctx.fillStyle = 'white'
+    ctx.font = '10px Verdana'
+    ctx.fillText('Alexandrite', 138, 445)
+    ctx.fillStyle = '#8B6F48'
+    ctx.fillRect(140, 450, 50, 50)
+    ctx.fillStyle = '#281172'
+    ctx.strokeStyle = '#281172'
+    ctx.beginPath();
+    ctx.arc(140+25,450+25,10,0,2*Math.PI);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = 'white'
+    ctx.font = '15px Verdana'
+    ctx.strokeStyle = 'black'
+    ctx.fillText(player.inventory.alexandrite, 140+25, 450+45)
 
     ctx.fillStyle = 'white'
     ctx.fillText('Position: ' + player.x + ', ' + player.y, 10, 590)

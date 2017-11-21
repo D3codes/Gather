@@ -8,8 +8,8 @@ export default class World{
 		for (let y=0;y<300;y++){
 			let row=[];
 			for (let x=0;x<300;x++){
-				let generator=Math.random(type);
 				let type='';
+				let generator=Math.random(type);
 				if (generator<.8){
 					type='rock';
 				}
@@ -40,9 +40,10 @@ export default class World{
 			}
 		}
 		//place special tiles
-		this.grid[151][150].setType('trade');
+		this.grid[151][149].setType('trade');
 		this.grid[151][151].setType('fuel')
-		this.grid[149][150].setType('repair')
+		this.grid[149][149].setType('repair')
+		this.grid[149][151].setType('upgrade')
 
 		//bind class functions
 		this.update.bind(this);
@@ -82,6 +83,10 @@ export default class World{
 		else return amountOfRepairsAfforded
 	}
 
+	upgrade(playerInfo) {
+		//TODO:add upgrade popup menu
+	}
+
 	update(playerPosition, playerInfo){
 		let type=this.grid[playerPosition.x][playerPosition.y].getInfo().type;
 		if (type!=="empty"){
@@ -93,6 +98,9 @@ export default class World{
 			}
 			if(type === 'repair') {
 				return {type:'repair', amount: this.repair(playerInfo)}
+			}
+			if(type === 'upgrade') {
+				return {type:'upgrade', amount: this.upgrade(playerInfo)}
 			}
 			else{
 				this.grid[playerPosition.x][playerPosition.y].setType('empty');
