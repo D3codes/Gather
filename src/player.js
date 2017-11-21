@@ -60,14 +60,16 @@ export default class Player {
       this.health += updateInfo.amount
       this.money -= updateInfo.amount*10
     }
-    else if(updateInfo.type === 'rock' || updateInfo.type === 'wood-wood') {
+    else if(updateInfo.type === 'rock') {
       this.fuel--
     }
     else if(updateInfo.type === 'upgrade') {
       //TODO: upgrade
     }
-		else if (updateInfo.type!=='empty'){
-      this.fuel -= 2
+		else if (updateInfo.type!=='empty' && updateInfo.type !== 'rock'){
+      if(updateInfo.type === 'wood-wood') this.fuel--
+      else this.fuel -= 2
+      
 			if(this.usedStorage < this.maxStorage) {
         this.inventory[updateInfo.type.split('-')[1]]+=1;
 			  this.usedStorage+=1;

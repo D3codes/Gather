@@ -12,7 +12,7 @@ export default class Info {
     ctx.fillStyle = '#000080'
     ctx.fillRect(0,0,200,600)
 
-	ctx.fillStyle = 'white'
+	  ctx.fillStyle = 'white'
     ctx.fillText('Money: $' + player.money, 10, 25)
 
     ctx.fillStyle = 'white'
