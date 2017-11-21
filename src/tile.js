@@ -24,7 +24,6 @@ export default class Tile{
 				ctx.fillRect(x*40,y*40,38,38);
 				break;
 			case 'ore':
-				console.log(split[1]);
 				ctx.fillStyle='#8B6F48'
 				ctx.fillRect(x*40,y*40,38,38);
 				let color=''
