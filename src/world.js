@@ -89,6 +89,8 @@ export default class World{
 	}
 
 	update(playerPosition, playerInfo){
+		if(playerInfo.health === 0) this.state = 'GAME_OVER'
+
 		let type=this.grid[playerPosition.x][playerPosition.y].getInfo().type;
 		if (type!=="empty"){
 			if(type==="trade"){

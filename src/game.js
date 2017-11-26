@@ -3,6 +3,7 @@ import Player from './player'
 import Tile from './tile';
 import World from './world';
 import Info from './info'
+import Popup from './popup'
 
 /** @class Game
   * Represents a gather game
@@ -14,6 +15,9 @@ export default class Game{
 		this.world=new World();
 		this.player = new Player()
 		this.info = new Info(this.player)
+		this.popup = new Popup()
+
+		this.state = 'PLAY'
 
 		//create tiles
 		this.tiles=[];
@@ -37,6 +41,18 @@ export default class Game{
 		this.screenBufferCanvas = document.createElement('canvas');
 		this.screenBufferCanvas.width = 800;
 		this.screenBufferCanvas.height = 600;
+		this.screenBufferCanvas.onmousedown = (event) => {
+			if(this.state === 'GAME OVER') {
+				if(event.clientX > 278 && event.clientX < 378 &&
+					event.clientY > 429 && event.clientY < 454) {
+					this.world=new World();
+					this.player = new Player()
+					this.info = new Info(this.player)
+					this.state = 'PLAY'
+				}
+			}
+		}
+
 		document.body.appendChild(this.screenBufferCanvas);
 		this.screenBufferContext = this.screenBufferCanvas.getContext('2d');
 		// Bind class functions
@@ -48,9 +64,12 @@ export default class Game{
 	}
 
 	update(){
+		if(this.player.getInfo().health === 0) this.state = 'GAME OVER'
+
 		let playerUpdate=this.world.update(this.player.getPosition(), this.player.getInfo());
 		this.player.update(playerUpdate)
 		this.info.update()
+		this.popup.update(this.state)
 	}
 
 	render(){
@@ -61,8 +80,9 @@ export default class Game{
 		//render tiles
 
 		this.world.render(this.backBufferContext, this.player.getPosition());
-
 		this.player.render(this.backBufferContext)
+		this.popup.render(this.backBufferContext)
+
 		this.info.render(this.infoBufferContext, this.player.getInfo())
 
 		this.screenBufferContext.drawImage(this.backBufferCanvas,0,0);
