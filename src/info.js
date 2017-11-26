@@ -122,6 +122,15 @@ export default class Info {
     ctx.strokeStyle = 'black'
     ctx.fillText(player.inventory.platinum, 140+25, 290+45)
 
+    if(player.drillStrength < 25) {
+      ctx.globalAlpha = 0.75
+      ctx.fillStyle = 'grey'
+      ctx.fillRect(10, 290, 50, 50)
+      ctx.fillRect(75, 290, 50, 50)
+      ctx.fillRect(140, 290, 50, 50)
+      ctx.globalAlpha = 1.0
+    }
+
     ctx.fillStyle = 'white'
     ctx.font = '10px Verdana'
     ctx.fillText('Amethyst', 12, 365)
@@ -170,6 +179,15 @@ export default class Info {
     ctx.strokeStyle = 'black'
     ctx.fillText(player.inventory.emerald, 140+25, 370+45)
 
+    if(player.drillStrength < 50) {
+      ctx.globalAlpha = 0.75
+      ctx.fillStyle = 'grey'
+      ctx.fillRect(10, 370, 50, 50)
+      ctx.fillRect(75, 370, 50, 50)
+      ctx.fillRect(140, 370, 50, 50)
+      ctx.globalAlpha = 1.0
+    }
+
     ctx.fillStyle = 'white'
     ctx.font = '10px Verdana'
     ctx.fillText('Ruby', 21, 445)
@@ -217,6 +235,15 @@ export default class Info {
     ctx.font = '15px Verdana'
     ctx.strokeStyle = 'black'
     ctx.fillText(player.inventory.alexandrite, 140+25, 450+45)
+
+    if(player.drillStrength < 100) {
+      ctx.globalAlpha = 0.75
+      ctx.fillStyle = 'grey'
+      ctx.fillRect(10, 450, 50, 50)
+      ctx.fillRect(75, 450, 50, 50)
+      ctx.fillRect(140, 450, 50, 50)
+      ctx.globalAlpha = 1.0
+    }
 
     ctx.fillStyle = 'white'
     ctx.fillText('Position: ' + player.x + ', ' + player.y, 10, 590)

@@ -119,6 +119,35 @@ export default class Tile{
 	}
 
 	getInfo(){
-		return {type:this.type}
+		var hardness = 0
+		switch(this.type.split('-')[1]) {
+			case 'iron':
+			case 'bronze':
+				hardness = 10
+				break;
+
+			case 'silver':
+			case 'gold':
+			case 'platinum':
+				hardness = 25
+				break;
+
+			case 'amethyst':
+			case 'sapphire':
+			case 'emerald':
+				hardness = 50
+				break;
+
+			case 'ruby':
+			case 'diamond':
+			case 'alexandrite':
+				hardness = 100
+				break;
+
+			default:
+				hardness = 0
+		}
+
+		return {type:this.type, hardness:hardness}
 	}
 }

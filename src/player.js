@@ -32,6 +32,7 @@ export default class Player {
     }
 
     this.handleKeyDown = this.handleKeyDown.bind(this)
+    this.lastMove = ''
     window.addEventListener('keydown', this.handleKeyDown)
   }
 
@@ -65,6 +66,28 @@ export default class Player {
     }
     else if(updateInfo.type === 'upgrade') {
       //TODO: upgrade
+    } else if(updateInfo.type === 'damage') {
+      if(this.health > 0){
+        this.health -= updateInfo.amount
+      }
+      if(this.health < 0) this.health = 0
+      switch(this.lastMove) {
+        case 'up':
+          this.y+=1
+          break
+
+        case 'down':
+          this.y-=1
+          break
+
+        case 'left':
+          this.x+=1
+          break
+
+        case 'right':
+          this.x-=1
+          break
+      }
     }
 		else if (updateInfo.type!=='empty' && updateInfo.type !== 'rock'){
       if(updateInfo.type === 'wood-wood') if(this.fuel > 0) this.fuel--
@@ -127,21 +150,25 @@ export default class Player {
       case 'ArrowLeft':
         if(this.x > 7) this.x-=1
         if(this.fuel > 0) this.fuel--
+        this.lastMove = 'left'
         break
       case 'd':
       case 'ArrowRight':
         if(this.x < 291) this.x+=1
         if(this.fuel > 0) this.fuel--
+        this.lastMove = 'right'
         break
       case 'w':
       case 'ArrowUp':
         if(this.y > 7) this.y-=1
         if(this.fuel > 0) this.fuel--
+        this.lastMove = 'up'
         break
       case 's':
       case 'ArrowDown':
         if(this.y < 291) this.y+=1
         if(this.fuel > 0) this.fuel--
+        this.lastMove = 'down'
         break
 
       case 'e':

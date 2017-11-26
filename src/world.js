@@ -92,6 +92,7 @@ export default class World{
 		if(playerInfo.health === 0) this.state = 'GAME_OVER'
 
 		let type=this.grid[playerPosition.x][playerPosition.y].getInfo().type;
+		let hardness=this.grid[playerPosition.x][playerPosition.y].getInfo().hardness;
 		if (type!=="empty"){
 			if(type==="trade"){
 				return {type:'trade', income:this.sellItems(playerInfo.inventory)};
@@ -106,7 +107,11 @@ export default class World{
 				return {type:'upgrade', amount: this.upgrade(playerInfo)}
 			}
 			else{
-				this.grid[playerPosition.x][playerPosition.y].setType('empty');
+				if(hardness <= playerInfo.drillStrength) {
+					this.grid[playerPosition.x][playerPosition.y].setType('empty');
+				} else {
+					return {type: 'damage', amount: hardness-playerInfo.drillStrength}
+				}
 			}
 		}
 		return {type:type};

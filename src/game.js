@@ -64,7 +64,7 @@ export default class Game{
 	}
 
 	update(){
-		if(this.player.getInfo().health === 0) this.state = 'GAME OVER'
+		if(this.player.getInfo().health <= 0) this.state = 'GAME OVER'
 
 		let playerUpdate=this.world.update(this.player.getPosition(), this.player.getInfo());
 		this.player.update(playerUpdate)
