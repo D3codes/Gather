@@ -10,8 +10,6 @@ import Popup from './popup'
   */
 export default class Game{
 	constructor(){
-		this.over=false;
-
 		this.world=new World();
 		this.player = new Player()
 		this.info = new Info(this.player)
@@ -88,6 +86,8 @@ export default class Game{
 									this.player.money -= 10000
 								}
 				        break
+
+							default:
 				    }
 				}
 
@@ -113,6 +113,8 @@ export default class Game{
 									this.player.money -= 5000
 								}
 				        break
+
+							default:
 				    }
 				}
 
@@ -138,6 +140,8 @@ export default class Game{
 									this.player.money -= 5000
 								}
 				        break
+
+							default:
 				    }
 				}
 
@@ -191,9 +195,7 @@ export default class Game{
 	}
 
 	loop(){
-		if (!this.over){
-			this.update();
-			this.render();
-		}
+		this.update();
+		this.render();
 	}
 }

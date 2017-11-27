@@ -84,6 +84,8 @@ export default class Player {
         case 'right':
           this.x-=1
           break
+
+        default:
       }
     }
 		else if (updateInfo.type!=='empty' && updateInfo.type !== 'rock'){

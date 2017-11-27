@@ -63,6 +63,7 @@ export default class Tile{
 						//blue+purple in final
 						color='#281172';
 						break;
+					default:
 				}
 				ctx.strokeStyle=color;
 				ctx.fillStyle=color;
@@ -74,10 +75,6 @@ export default class Tile{
 			case 'wood':
 				ctx.fillStyle='green'
 				ctx.fillRect(x*40,y*40,38,38);
-					switch (split[1]){
-						case 'wood':
-							break;
-					}
 				break;
 			case 'trade':
 				ctx.fillStyle='#393433'
@@ -110,8 +107,9 @@ export default class Tile{
 			ctx.font = '15px Verdana'
 			ctx.fillText('U', x*40+14, y*40+20);
 			break
-		}
 
+			default:
+		}
 	}
 
 	setType(type){
