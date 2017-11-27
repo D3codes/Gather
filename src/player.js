@@ -1,7 +1,7 @@
 export default class Player {
   constructor() {
-    this.x = 150;
-    this.y = 150;
+    this.x = 600;
+    this.y = 600;
 
     this.fuel = 100
     this.maxFuel = 100

@@ -5,9 +5,9 @@ export default class World{
 		//grid represents the 2d martix of the world of tiles
 		//tile types are represented as integers
 		this.grid=[];
-		for (let y=0;y<300;y++){
+		for (let y=0;y<1200;y++){
 			let row=[];
-			for (let x=0;x<300;x++){
+			for (let x=0;x<1200;x++){
 				let type='';
 				let generator=Math.random(type);
 				if (generator<.8){
@@ -34,16 +34,16 @@ export default class World{
 			this.grid.push(row);
 		}
 		//build spawn area
-		for (let x=148;x<153;x++){
-			for (let y=148;y<153;y++){
+		for (let x=598;x<603;x++){
+			for (let y=598;y<603;y++){
 				this.grid[x][y].setType('empty');
 			}
 		}
 		//place special tiles
-		this.grid[151][149].setType('trade');
-		this.grid[151][151].setType('fuel')
-		this.grid[149][149].setType('repair')
-		this.grid[149][151].setType('upgrade')
+		this.grid[601][599].setType('trade');
+		this.grid[601][601].setType('fuel')
+		this.grid[599][599].setType('repair')
+		this.grid[599][601].setType('upgrade')
 
 		//bind class functions
 		this.update.bind(this);
