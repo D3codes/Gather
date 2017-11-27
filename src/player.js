@@ -106,9 +106,6 @@ export default class Player {
     }
 
     if(this.fuel <= 0) this.health = 0
-    if(this.health <= 0) {
-      //TODO: death
-    }
 	}
 
   render(ctx) {
