@@ -244,20 +244,4 @@ export default class Info {
     ctx.fillStyle = 'white'
     ctx.fillText('Position: ' + player.x + ', ' + player.y, 10, 590)
   }
-
-  getXYForSlot(slot) {
-    if(Math.floor(slot/3) === 0){
-      return {x: slot*60+10, y: 190}
-    } else if(Math.floor(slot/3) === 1) {
-      return {x: (slot-3)*60+10, y: 250}
-    } else if(Math.floor(slot/3) === 2) {
-      return {x: (slot-6)*60+10, y: 310}
-    } else if(Math.floor(slot/3) === 3) {
-      return {x: (slot-9)*60+10, y: 370}
-    } else if(Math.floor(slot/3) === 4) {
-      return {x: (slot-12)*60+10, y: 430}
-    } else {
-      return {x: (slot-15)*60+10, y: 490}
-    }
-  }
 }
