@@ -150,7 +150,7 @@ export default class Player {
         break
       case 'd':
       case 'ArrowRight':
-        if(this.x < 291) this.x+=1
+        if(this.x < 1191) this.x+=1
         if(this.fuel > 0) this.fuel--
         this.lastMove = 'right'
         break
@@ -162,7 +162,7 @@ export default class Player {
         break
       case 's':
       case 'ArrowDown':
-        if(this.y < 291) this.y+=1
+        if(this.y <1191) this.y+=1
         if(this.fuel > 0) this.fuel--
         this.lastMove = 'down'
         break
