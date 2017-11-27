@@ -242,6 +242,6 @@ export default class Info {
     }
 
     ctx.fillStyle = 'white'
-    ctx.fillText('Position: ' + player.x + ', ' + player.y, 10, 590)
+    ctx.fillText('Position: ' + (player.x-600) + ', ' + (-player.y+600), 10, 590)
   }
 }
