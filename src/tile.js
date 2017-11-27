@@ -6,6 +6,9 @@ export default class Tile{
 		//bind class methods
 		this.update=this.update.bind(this);
 		this.render=this.render.bind(this);
+
+		this.image = new Image()
+		
 	}
 
 	update(){
@@ -16,61 +19,54 @@ export default class Tile{
 		let split=this.type.split('-');
 		switch(split[0]){
 			case 'empty':
-				ctx.fillStyle='gray'
-				ctx.fillRect(x*40,y*40,38,38);
+				this.image.src = 'images/clear.png'
+				ctx.drawImage(this.image, x*40, y*40, 40, 40)
 				break;
 			case 'rock':
-				ctx.fillStyle='brown'
-				ctx.fillRect(x*40,y*40,38,38);
+			this.image.src = 'images/rock.png'
+			ctx.drawImage(this.image, x*40, y*40, 40, 40)
 				break;
 			case 'ore':
-				ctx.fillStyle='#8B6F48'
-				ctx.fillRect(x*40,y*40,38,38);
-				let color=''
 				//place holders until sprites
 				switch(split[1]){
 					case 'iron':
-						color='#414141';
+						this.image.src = 'images/iron.png'
 						break;
 					case 'bronze':
-						color='#A57025';
+						this.image.src = 'images/bronze.png'
 						break;
 					case 'silver':
-						color='#A4A29F';
+						this.image.src = 'images/silver.png'
 						break;
 					case 'gold':
-						color='#AA9634';
+						this.image.src = 'images/gold.png'
 						break;
 					case 'platinum':
-						color='#DEDEDE';
+						this.image.src = 'images/platinum.png'
 						break;
 					case 'amethyst':
-						color='#AB6FCD';
+						this.image.src = 'images/amethyst.png'
 						break;
 					case 'sapphire':
-						color='#0A5CB4';
+						this.image.src = 'images/saphire.png'
 						break;
 					case 'emerald':
-						color='#44B26B';
+						this.image.src = 'images/emerald.png'
 						break;
 					case 'ruby':
-						color='#E80000';
+						this.image.src = 'images/ruby.png'
 						break;
 					case 'diamond':
-						color='#9EEFFF';
+						this.image.src = 'images/diamond.png'
 						break;
 					case 'alexandrite':
 						//blue+purple in final
-						color='#281172';
+						this.image.src = 'images/alexandrite.png'
 						break;
 					default:
 				}
-				ctx.strokeStyle=color;
-				ctx.fillStyle=color;
-				ctx.beginPath();
-				ctx.arc(x*40+19,y*40+19,15,0,2*Math.PI);
-				ctx.fill();
-				ctx.stroke();
+
+				ctx.drawImage(this.image, x*40, y*40, 40, 40)
 				break;
 			case 'wood':
 				ctx.fillStyle='green'

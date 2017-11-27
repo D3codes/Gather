@@ -57,9 +57,9 @@ export default class Game{
 			} else if(this.state === 'START') {
 				if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 429 && event.clientY < 454) {
-					this.world=new World();
-					this.player = new Player()
-					this.info = new Info(this.player)
+					//this.world=new World();
+					//this.player = new Player()
+					//this.info = new Info(this.player)
 					this.state = 'PLAY'
 				}
 			} else if(this.state === 'UPGRADE') {
