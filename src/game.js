@@ -88,6 +88,8 @@ export default class Game{
 									this.player.money -= 10000
 								}
 				        break
+
+							default:
 				    }
 				}
 
@@ -113,6 +115,8 @@ export default class Game{
 									this.player.money -= 5000
 								}
 				        break
+
+							default:
 				    }
 				}
 
@@ -138,6 +142,8 @@ export default class Game{
 									this.player.money -= 5000
 								}
 				        break
+
+							default:
 				    }
 				}
 

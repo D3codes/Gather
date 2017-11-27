@@ -1,8 +1,4 @@
 export default class Info {
-  constructor() {
-
-  }
-
   update() {
 
   }
