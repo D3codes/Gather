@@ -148,8 +148,8 @@ export default class Game{
 				//exit
 				if(event.clientX > 139 && event.clientX < 163 &&
 					event.clientY > 189 && event.clientY < 214) {
-					this.player.x = 150
-					this.player.y = 150
+					this.player.x = 600
+					this.player.y = 600
 					this.state = 'PLAY'
 				}
 			}
