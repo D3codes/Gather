@@ -33,6 +33,7 @@ export default class World{
 			}
 			this.grid.push(row);
 		}
+		//DEVELOPING NEW WORLD DEPLOYMENT ALGORITHM
 		//build spawn area
 		for (let x=598;x<603;x++){
 			for (let y=598;y<603;y++){
