@@ -13,7 +13,7 @@ export default class Popup {
         break
       case 25:
         this.drillUpgrade = 50
-        this.drillUpgardeCost = 1000
+        this.drillUpgradeCost = 1000
         break
       case 50:
         this.drillUpgrade = 100
