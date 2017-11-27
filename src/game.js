@@ -42,7 +42,6 @@ export default class Game{
 		this.screenBufferCanvas.width = 800;
 		this.screenBufferCanvas.height = 600;
 		this.screenBufferCanvas.onmousedown = (event) => {
-			console.log(event.clientX, event.clientY)
 			if(this.state === 'GAME OVER') {
 				if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 429 && event.clientY < 454) {
@@ -65,6 +64,90 @@ export default class Game{
 					this.info = new Info(this.player)
 					this.state = 'PLAY'
 				}
+			} else if(this.state === 'UPGRADE') {
+				//increase fuel tank
+				let playerInfo = this.player.getInfo()
+				if(event.clientX > 409 && event.clientX < 509 &&
+					event.clientY > 289 && event.clientY < 313) {
+						switch(playerInfo.maxFuel) {
+				      case 100:
+								if(playerInfo.money >= 250) {
+									this.player.maxFuel = 150
+									this.player.money -= 250
+								}
+				        break
+				      case 150:
+								if(playerInfo.money >= 1000) {
+									this.player.maxFuel = 250
+									this.player.money -= 1000
+								}
+				        break
+				      case 250:
+								if(playerInfo.money >= 10000) {
+									this.player.maxFuel = 500
+									this.player.money -= 10000
+								}
+				        break
+				    }
+				}
+
+				//increase drill Strength
+				if(event.clientX > 409 && event.clientX < 509 &&
+					event.clientY > 360 && event.clientY < 383) {
+						switch(playerInfo.drillStrength) {
+				      case 10:
+								if(playerInfo.money >= 500) {
+									this.player.drillStrength = 25
+									this.player.money -= 500
+								}
+				        break
+				      case 25:
+								if(playerInfo.money >= 1000) {
+									this.player.drillStrength = 50
+									this.player.money -= 1000
+								}
+				        break
+				      case 50:
+								if(playerInfo.money >= 5000) {
+									this.player.drillStrength = 100
+									this.player.money -= 5000
+								}
+				        break
+				    }
+				}
+
+				//increase inventory space
+				if(event.clientX > 409 && event.clientX < 509 &&
+					event.clientY > 430 && event.clientY < 453) {
+						switch(playerInfo.maxStorage) {
+				      case 10:
+								if(playerInfo.money >= 500) {
+									this.player.maxStorage = 25
+									this.player.money -= 500
+								}
+				        break
+				      case 25:
+								if(playerInfo.money >= 2000) {
+									this.player.maxStorage = 50
+									this.player.money -= 2000
+								}
+				        break
+				      case 50:
+								if(playerInfo.money >= 5000) {
+									this.player.maxStorage = 100
+									this.player.money -= 5000
+								}
+				        break
+				    }
+				}
+
+				//exit
+				if(event.clientX > 139 && event.clientX < 163 &&
+					event.clientY > 189 && event.clientY < 214) {
+					this.player.x = 150
+					this.player.y = 150
+					this.state = 'PLAY'
+				}
 			}
 		}
 
@@ -82,12 +165,12 @@ export default class Game{
 		if(this.player.getInfo().health <= 0) this.state = 'GAME OVER'
 
 		if(this.state === 'PLAY') {
-			let playerUpdate=this.world.update(this.player.getPosition(), this.player.getInfo());
+			let playerUpdate=this.world.update(this.player.getPosition(), this.player.getInfo(), this);
 			this.player.update(playerUpdate)
 			this.info.update()
 		}
 
-		this.popup.update(this.state)
+		this.popup.update(this.state, this.player.getInfo())
 	}
 
 	render(){

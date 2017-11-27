@@ -63,9 +63,6 @@ export default class Player {
     }
     else if(updateInfo.type === 'rock') {
       if(this.fuel > 0) this.fuel--
-    }
-    else if(updateInfo.type === 'upgrade') {
-      //TODO: upgrade
     } else if(updateInfo.type === 'damage') {
       if(this.health > 0){
         this.health -= updateInfo.amount

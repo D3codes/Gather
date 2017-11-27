@@ -84,11 +84,7 @@ export default class World{
 		else return amountOfRepairsAfforded
 	}
 
-	upgrade(playerInfo) {
-		//TODO:add upgrade popup menu
-	}
-
-	update(playerPosition, playerInfo){
+	update(playerPosition, playerInfo, game){
 		if(playerInfo.health === 0) this.state = 'GAME_OVER'
 
 		let type=this.grid[playerPosition.x][playerPosition.y].getInfo().type;
@@ -104,7 +100,8 @@ export default class World{
 				return {type:'repair', amount: this.repair(playerInfo)}
 			}
 			if(type === 'upgrade') {
-				return {type:'upgrade', amount: this.upgrade(playerInfo)}
+				game.state = 'UPGRADE'
+				return {type:'upgrade'}
 			}
 			else{
 				if(hardness <= playerInfo.drillStrength) {
