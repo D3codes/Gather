@@ -87,6 +87,8 @@ export default class Player {
 
         default:
       }
+    } else if(updateInfo.type === 'upgrade') {
+      //DO NOTHING - DONT REMOVE THIS!!
     }
 		else if (updateInfo.type!=='empty' && updateInfo.type !== 'rock'){
       if(updateInfo.type === 'wood_wood') if(this.fuel > 0) this.fuel--
