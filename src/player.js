@@ -89,14 +89,14 @@ export default class Player {
       }
     }
 		else if (updateInfo.type!=='empty' && updateInfo.type !== 'rock'){
-      if(updateInfo.type === 'wood-wood') if(this.fuel > 0) this.fuel--
+      if(updateInfo.type === 'wood_wood') if(this.fuel > 0) this.fuel--
       else {
         if(this.fuel > 1) this.fuel-=2
         else if(this.fuel > 0) this.fuel--
       }
 
 			if(this.usedStorage < this.maxStorage) {
-        this.inventory[updateInfo.type.split('-')[1]]+=1;
+        this.inventory[updateInfo.type.split('_')[1]]+=1;
 			  this.usedStorage+=1;
       }
 		}

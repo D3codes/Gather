@@ -1,7 +1,8 @@
 import Tile from './tile';
 
 export default class World{
-	constructor(){
+	constructor(images){
+		this.images = images
 		//grid represents the 2d martix of the world of tiles
 		//tile types are represented as integers
 		this.grid=[];
@@ -14,20 +15,20 @@ export default class World{
 					type='rock';
 				}
 				else if(generator<.9){
-					if (generator<.82) type='ore-iron'
-					else if (generator<.83) type ='ore-bronze'
-					else if (generator<.84) type = 'ore-silver'
-					else if (generator<.85) type = 'ore-gold'
-					else if (generator<.86) type = 'ore-platinum'
-					else if (generator<.87) type = 'ore-amethyst'
-					else if (generator<.88) type = 'ore-sapphire'
-					else if (generator<.885) type = 'ore-emerald'
-					else if (generator<.89) type = 'ore-ruby'
-					else if (generator<.895) type = 'ore-diamond'
-					else type = 'ore-alexandrite'
+					if (generator<.82) type='ore_iron'
+					else if (generator<.83) type ='ore_bronze'
+					else if (generator<.84) type = 'ore_silver'
+					else if (generator<.85) type = 'ore_gold'
+					else if (generator<.86) type = 'ore_platinum'
+					else if (generator<.87) type = 'ore_amethyst'
+					else if (generator<.88) type = 'ore_sapphire'
+					else if (generator<.885) type = 'ore_emerald'
+					else if (generator<.89) type = 'ore_ruby'
+					else if (generator<.895) type = 'ore_diamond'
+					else type = 'ore_alexandrite'
 				}
 				else{
-					type='wood-wood'
+					type='wood_wood'
 				}
 				row.push(new Tile(type));
 			}
@@ -112,13 +113,13 @@ export default class World{
 				}
 			}
 		}
-		return {type:type};
+		return {type:type}
 	}
 
 	render(ctx, playerPosition){
 		for (let x=0;x<16;x++){
 			for (let y=0;y<16;y++){
-				this.grid[playerPosition.x-7+x][playerPosition.y-7+y].render(ctx,x,y);
+				this.grid[playerPosition.x-7+x][playerPosition.y-7+y].render(ctx,x,y, this.images);
 			}
 		}
 	}

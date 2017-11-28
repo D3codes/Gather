@@ -10,9 +10,50 @@ import Popup from './popup'
   */
 export default class Game{
 	constructor(){
-		this.world=new World();
+		this.images = {
+			empty: new Image(),
+			rock: new Image(),
+			ore_iron: new Image(),
+			ore_bronze: new Image(),
+			ore_silver: new Image(),
+			ore_gold: new Image(),
+			ore_platinum: new Image(),
+			ore_amethyst: new Image(),
+			ore_sapphire: new Image(),
+			ore_emerald: new Image(),
+			ore_ruby: new Image(),
+			ore_diamond: new Image(),
+			ore_alexandrite: new Image(),
+			wood_wood: new Image(),
+			trade: new Image(),
+			fuel: new Image(),
+			repair: new Image(),
+			upgrade: new Image()
+		}
+
+		this.images.empty.src = 'images/empty.png'
+		this.images.rock.src = 'images/rock.png'
+		this.images.ore_iron.src = 'images/iron.png'
+		this.images.ore_bronze.src = 'images/bronze.png'
+		this.images.ore_silver.src = 'images/silver.png'
+		this.images.ore_gold.src = 'images/gold.png'
+		this.images.ore_platinum.src = 'images/platinum.png'
+		this.images.ore_amethyst.src = 'images/amethyst.png'
+		this.images.ore_sapphire.src = 'images/sapphire.png'
+		this.images.ore_emerald.src = 'images/emerald.png'
+		this.images.ore_ruby.src = 'images/ruby.png'
+		this.images.ore_diamond.src = 'images/diamond.png'
+		this.images.ore_alexandrite.src = 'images/alexandrite.png'
+		this.images.wood_wood.src = 'images/wood.png'
+		this.images.trade.src = 'images/trade.png'
+		this.images.fuel.src = 'images/fuel.png'
+		this.images.repair.src = 'images/repair.png'
+		this.images.upgrade.src = 'images/upgrade.png'
+
+
+		this.world=new World(this.images);
 		this.player = new Player()
-		this.info = new Info(this.player)
+		this.info = new Info(this.images)
 		this.popup = new Popup()
 
 		this.state = 'START'
@@ -43,23 +84,20 @@ export default class Game{
 			if(this.state === 'GAME OVER') {
 				if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 429 && event.clientY < 454) {
-					this.world=new World();
+					this.world=new World(this.images);
 					this.player = new Player()
-					this.info = new Info(this.player)
+					this.info = new Info(this.images)
 					this.state = 'PLAY'
 				} else if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 390 && event.clientY < 414){
-					this.world=new World();
+					this.world=new World(this.images);
 					this.player = new Player()
-					this.info = new Info(this.player)
+					this.info = new Info(this.images)
 					this.state = 'START'
 				}
 			} else if(this.state === 'START') {
 				if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 429 && event.clientY < 454) {
-					//this.world=new World();
-					//this.player = new Player()
-					//this.info = new Info(this.player)
 					this.state = 'PLAY'
 				}
 			} else if(this.state === 'UPGRADE') {
