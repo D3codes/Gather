@@ -101,6 +101,8 @@ export default class Game{
 				if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 429 && event.clientY < 454) {
 					this.state = 'PLAY'
+					this.player.x = 600
+					this.player.y = 600
 				}
 			} else if(this.state === 'UPGRADE') {
 				//increase fuel tank
@@ -206,6 +208,10 @@ export default class Game{
 	}
 
 	update(){
+		if(this.state === 'START') {
+			this.player.x = 599
+			this.player.y = 601
+		}
 		if(this.player.getInfo().health <= 0) this.state = 'GAME OVER'
 
 		if(this.state === 'PLAY') {
