@@ -52,9 +52,19 @@ export default class Game{
 		this.images.upgrade.src = 'images/upgrade.png'
 		this.images.player.src = 'images/player.png'
 
+		this.sounds = {
+			destroy: new Audio('destroy.wav'),
+			fuel: new Audio('fuel.wav'),
+			pickup: new Audio('pickup.wav'),
+			repair: new Audio('repair.wav'),
+			trade: new Audio('trade.wav'),
+			upgrade: new Audio('upgrade.wav'),
+			damage: new Audio('damage.wav')
+		}
+
 
 		this.world=new World(this.images);
-		this.player = new Player(this.images.player)
+		this.player = new Player(this.images.player, this.sounds)
 		this.info = new Info(this.images)
 		this.popup = new Popup()
 
@@ -87,13 +97,13 @@ export default class Game{
 				if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 429 && event.clientY < 454) {
 					this.world=new World(this.images);
-					this.player = new Player(this.images.player)
+					this.player = new Player(this.images.player, this.sounds)
 					this.info = new Info(this.images)
 					this.state = 'PLAY'
 				} else if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 390 && event.clientY < 414){
 					this.world=new World(this.images);
-					this.player = new Player(this.images.player)
+					this.player = new Player(this.images.player, this.sounds)
 					this.info = new Info(this.images)
 					this.state = 'START'
 				}
@@ -114,18 +124,21 @@ export default class Game{
 								if(playerInfo.money >= 250) {
 									this.player.maxFuel = 150
 									this.player.money -= 250
+									this.sounds.upgrade.play()
 								}
 				        break
 				      case 150:
 								if(playerInfo.money >= 1000) {
 									this.player.maxFuel = 250
 									this.player.money -= 1000
+									this.sounds.upgrade.play()
 								}
 				        break
 				      case 250:
 								if(playerInfo.money >= 10000) {
 									this.player.maxFuel = 500
 									this.player.money -= 10000
+									this.sounds.upgrade.play()
 								}
 				        break
 
@@ -141,18 +154,21 @@ export default class Game{
 								if(playerInfo.money >= 500) {
 									this.player.drillStrength = 25
 									this.player.money -= 500
+									this.sounds.upgrade.play()
 								}
 				        break
 				      case 25:
 								if(playerInfo.money >= 1000) {
 									this.player.drillStrength = 50
 									this.player.money -= 1000
+									this.sounds.upgrade.play()
 								}
 				        break
 				      case 50:
 								if(playerInfo.money >= 5000) {
 									this.player.drillStrength = 100
 									this.player.money -= 5000
+									this.sounds.upgrade.play()
 								}
 				        break
 
@@ -168,18 +184,21 @@ export default class Game{
 								if(playerInfo.money >= 500) {
 									this.player.maxStorage = 25
 									this.player.money -= 500
+									this.sounds.upgrade.play()
 								}
 				        break
 				      case 25:
 								if(playerInfo.money >= 2000) {
 									this.player.maxStorage = 50
 									this.player.money -= 2000
+									this.sounds.upgrade.play()
 								}
 				        break
 				      case 50:
 								if(playerInfo.money >= 5000) {
 									this.player.maxStorage = 100
 									this.player.money -= 5000
+									this.sounds.upgrade.play()
 								}
 				        break
 

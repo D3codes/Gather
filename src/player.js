@@ -1,6 +1,7 @@
 export default class Player {
-  constructor(image) {
+  constructor(image, sounds) {
     this.image = image
+    this.sounds = sounds
 
     this.x = 600;
     this.y = 600;
@@ -54,20 +55,24 @@ export default class Player {
       this.inventory.diamond=0
       this.inventory.alexandrite=0
 			this.usedStorage=0;
+      this.sounds.trade.play()
 		}
     else if(updateInfo.type === 'fuel') {
       this.fuel += updateInfo.amount
       this.money -= updateInfo.amount*2
+      this.sounds.fuel.play()
     }
     else if(updateInfo.type === 'repair') {
       this.health += updateInfo.amount
       this.money -= updateInfo.amount*10
+      this.sounds.repair.play()
     }
     else if(updateInfo.type === 'rock') {
       if(this.fuel > 0) this.fuel--
     } else if(updateInfo.type === 'damage') {
       if(this.health > 0){
         this.health -= updateInfo.amount
+        this.sounds.damage.play()
       }
       if(this.health < 0) this.health = 0
       switch(this.lastMove) {
@@ -100,8 +105,11 @@ export default class Player {
       }
 
 			if(this.usedStorage < this.maxStorage) {
+        this.sounds.pickup.play()
         this.inventory[updateInfo.type.split('_')[1]]+=1;
 			  this.usedStorage+=1;
+      } else {
+        this.sounds.destroy.play()
       }
 		}
 
