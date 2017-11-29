@@ -150,6 +150,7 @@ export default class Player {
   handleKeyDown(event) {
     event.preventDefault()
     if(this.health <= 0) return
+    if(this.x === 599 && this.y === 601) return
 
     switch(event.key) {
       case 'a':
