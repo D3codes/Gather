@@ -28,7 +28,8 @@ export default class Game{
 			trade: new Image(),
 			fuel: new Image(),
 			repair: new Image(),
-			upgrade: new Image()
+			upgrade: new Image(),
+			player: new Image()
 		}
 
 		this.images.empty.src = 'images/empty.png'
@@ -49,10 +50,11 @@ export default class Game{
 		this.images.fuel.src = 'images/fuel.png'
 		this.images.repair.src = 'images/repair.png'
 		this.images.upgrade.src = 'images/upgrade.png'
+		this.images.player.src = 'images/player.png'
 
 
 		this.world=new World(this.images);
-		this.player = new Player()
+		this.player = new Player(this.images.player)
 		this.info = new Info(this.images)
 		this.popup = new Popup()
 
@@ -85,13 +87,13 @@ export default class Game{
 				if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 429 && event.clientY < 454) {
 					this.world=new World(this.images);
-					this.player = new Player()
+					this.player = new Player(this.images.player)
 					this.info = new Info(this.images)
 					this.state = 'PLAY'
 				} else if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 390 && event.clientY < 414){
 					this.world=new World(this.images);
-					this.player = new Player()
+					this.player = new Player(this.images.player)
 					this.info = new Info(this.images)
 					this.state = 'START'
 				}

@@ -1,5 +1,7 @@
 export default class Player {
-  constructor() {
+  constructor(image) {
+    this.image = image
+
     this.x = 600;
     this.y = 600;
 
@@ -32,7 +34,7 @@ export default class Player {
     }
 
     this.handleKeyDown = this.handleKeyDown.bind(this)
-    this.lastMove = ''
+    this.lastMove = 'right'
     window.addEventListener('keydown', this.handleKeyDown)
   }
 
@@ -114,9 +116,15 @@ export default class Player {
 
   render(ctx) {
     ctx.save()
-    ctx.fillStyle = 'black'
-    ctx.fillRect(293, 293, 15, 15)
-
+    ctx.translate(300, 300)
+    if(this.lastMove === 'up') {
+      ctx.rotate(-Math.PI/2)
+    } else if(this.lastMove === 'down') {
+      ctx.rotate(Math.PI/2)
+    } else if(this.lastMove === 'left') {
+      ctx.rotate(Math.PI)
+    }
+    ctx.drawImage(this.image, -20, -20)
     ctx.restore()
   }
 
