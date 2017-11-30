@@ -54,18 +54,18 @@ export default class Player {
       this.inventory.ruby=0
       this.inventory.diamond=0
       this.inventory.alexandrite=0
-			this.usedStorage=0;
-      this.sounds.trade.play()
+      if(this.usedStorage > 0) this.sounds.trade.play()
+      this.usedStorage=0;
 		}
     else if(updateInfo.type === 'fuel') {
       this.fuel += updateInfo.amount
       this.money -= updateInfo.amount*2
-      this.sounds.fuel.play()
+      if(updateInfo.amount > 0) this.sounds.fuel.play()
     }
     else if(updateInfo.type === 'repair') {
       this.health += updateInfo.amount
       this.money -= updateInfo.amount*10
-      this.sounds.repair.play()
+      if(updateInfo.amount > 0) this.sounds.repair.play()
     }
     else if(updateInfo.type === 'rock') {
       if(this.fuel > 0) this.fuel--

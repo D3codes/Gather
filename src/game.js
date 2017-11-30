@@ -59,9 +59,27 @@ export default class Game{
 			repair: new Audio('repair.wav'),
 			trade: new Audio('trade.wav'),
 			upgrade: new Audio('upgrade.wav'),
-			damage: new Audio('damage.wav')
+			damage: new Audio('damage.wav'),
+			engine1: new Audio('engine.wav'),
+			engine2: new Audio('engine.wav'),
+			engine3: new Audio('engine.wav'),
+			engine4: new Audio('engine.wav'),
+			engine5: new Audio('engine.wav')
 		}
-
+		this.sounds.engine1.loop = true
+		this.sounds.engine2.loop = true
+		this.sounds.engine2.currentTime = 0.1
+		this.sounds.engine3.loop = true
+		this.sounds.engine3.currentTime = 0.2
+		this.sounds.engine4.loop = true
+		this.sounds.engine4.currentTime = 0.3
+		this.sounds.engine5.loop = true
+		this.sounds.engine5.currentTime = 0.4
+		this.sounds.engine1.play()
+		this.sounds.engine2.play()
+		this.sounds.engine3.play()
+		this.sounds.engine4.play()
+		this.sounds.engine5.play()
 
 		this.world=new World(this.images);
 		this.player = new Player(this.images.player, this.sounds)
