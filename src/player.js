@@ -1,7 +1,25 @@
 export default class Player {
-  constructor(image, sounds) {
+  constructor(image) {
     this.image = image
-    this.sounds = sounds
+    this.sounds = {
+      destroy1: new Audio('destroy.wav'),
+      destroy2: new Audio('destroy.wav'),
+      destroy3: new Audio('destroy.wav'),
+      destroy4: new Audio('destroy.wav'),
+			fuel: new Audio('fuel.wav'),
+			pickup1: new Audio('pickup.wav'),
+      pickup2: new Audio('pickup.wav'),
+      pickup3: new Audio('pickup.wav'),
+      pickup4: new Audio('pickup.wav'),
+			repair: new Audio('repair.wav'),
+			trade: new Audio('trade.wav'),
+			upgrade: new Audio('upgrade.wav'),
+			damage1: new Audio('damage.wav'),
+      damage2: new Audio('damage.wav'),
+      damage3: new Audio('damage.wav'),
+      damage4: new Audio('damage.wav')
+    }
+    this.soundCounter = 1
 
     this.x = 600;
     this.y = 600;
@@ -72,7 +90,7 @@ export default class Player {
     } else if(updateInfo.type === 'damage') {
       if(this.health > 0){
         this.health -= updateInfo.amount
-        this.sounds.damage.play()
+        this.playSound('damage')
       }
       if(this.health < 0) this.health = 0
       switch(this.lastMove) {
@@ -105,11 +123,11 @@ export default class Player {
       }
 
 			if(this.usedStorage < this.maxStorage) {
-        this.sounds.pickup.play()
+        this.playSound('pickup')
         this.inventory[updateInfo.type.split('_')[1]]+=1;
 			  this.usedStorage+=1;
       } else {
-        this.sounds.destroy.play()
+        this.playSound('destroy')
       }
 		}
 
@@ -134,6 +152,12 @@ export default class Player {
     }
     ctx.drawImage(this.image, -20, -20)
     ctx.restore()
+  }
+
+  playSound(sound) {
+    this.soundCounter++
+    if(this.soundCounter >= 5) this.soundCounter = 1
+    this.sounds[sound+this.soundCounter].play()
   }
 
   getInfo(){

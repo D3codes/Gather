@@ -53,13 +53,6 @@ export default class Game{
 		this.images.player.src = 'images/player.png'
 
 		this.sounds = {
-			destroy: new Audio('destroy.wav'),
-			fuel: new Audio('fuel.wav'),
-			pickup: new Audio('pickup.wav'),
-			repair: new Audio('repair.wav'),
-			trade: new Audio('trade.wav'),
-			upgrade: new Audio('upgrade.wav'),
-			damage: new Audio('damage.wav'),
 			engine1: new Audio('engine.wav'),
 			engine2: new Audio('engine.wav'),
 			engine3: new Audio('engine.wav'),
@@ -68,21 +61,17 @@ export default class Game{
 		}
 		this.sounds.engine1.loop = true
 		this.sounds.engine2.loop = true
-		this.sounds.engine2.currentTime = 0.1
 		this.sounds.engine3.loop = true
-		this.sounds.engine3.currentTime = 0.2
 		this.sounds.engine4.loop = true
-		this.sounds.engine4.currentTime = 0.3
 		this.sounds.engine5.loop = true
-		this.sounds.engine5.currentTime = 0.4
-		this.sounds.engine1.play()
-		this.sounds.engine2.play()
-		this.sounds.engine3.play()
-		this.sounds.engine4.play()
-		this.sounds.engine5.play()
+		this.sounds.engine1.volume = 0.05
+		this.sounds.engine2.volume = 0.05
+		this.sounds.engine3.volume = 0.05
+		this.sounds.engine4.volume = 0.05
+		this.sounds.engine5.volume = 0.05
 
 		this.world=new World(this.images);
-		this.player = new Player(this.images.player, this.sounds)
+		this.player = new Player(this.images.player)
 		this.info = new Info(this.images)
 		this.popup = new Popup()
 
@@ -115,13 +104,23 @@ export default class Game{
 				if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 429 && event.clientY < 454) {
 					this.world=new World(this.images);
-					this.player = new Player(this.images.player, this.sounds)
+					this.player = new Player(this.images.player)
 					this.info = new Info(this.images)
 					this.state = 'PLAY'
+
+					this.sounds.engine2.currentTime = 0.1
+					this.sounds.engine3.currentTime = 0.2
+					this.sounds.engine4.currentTime = 0.3
+					this.sounds.engine5.currentTime = 0.4
+					this.sounds.engine1.play()
+					this.sounds.engine2.play()
+					this.sounds.engine3.play()
+					this.sounds.engine4.play()
+					this.sounds.engine5.play()
 				} else if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 390 && event.clientY < 414){
 					this.world=new World(this.images);
-					this.player = new Player(this.images.player, this.sounds)
+					this.player = new Player(this.images.player)
 					this.info = new Info(this.images)
 					this.state = 'START'
 				}
@@ -131,6 +130,16 @@ export default class Game{
 					this.state = 'PLAY'
 					this.player.x = 600
 					this.player.y = 600
+
+					this.sounds.engine2.currentTime = 0.1
+					this.sounds.engine3.currentTime = 0.2
+					this.sounds.engine4.currentTime = 0.3
+					this.sounds.engine5.currentTime = 0.4
+					this.sounds.engine1.play()
+					this.sounds.engine2.play()
+					this.sounds.engine3.play()
+					this.sounds.engine4.play()
+					this.sounds.engine5.play()
 				}
 			} else if(this.state === 'UPGRADE') {
 				//increase fuel tank
@@ -249,7 +258,14 @@ export default class Game{
 			this.player.x = 599
 			this.player.y = 601
 		}
-		if(this.player.getInfo().health <= 0) this.state = 'GAME OVER'
+		if(this.player.getInfo().health <= 0) {
+			this.sounds.engine1.pause()
+			this.sounds.engine2.pause()
+			this.sounds.engine3.pause()
+			this.sounds.engine4.pause()
+			this.sounds.engine5.pause()
+			this.state = 'GAME OVER'
+		}
 
 		if(this.state === 'PLAY') {
 			let playerUpdate=this.world.update(this.player.getPosition(), this.player.getInfo(), this);
