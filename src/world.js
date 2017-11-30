@@ -10,21 +10,23 @@ export default class World{
 			let row=[];
 			for (let x=0;x<1200;x++){
 				let type='';
-				let generator=Math.random(type);
+				let generator=Math.random();
 				if (generator<.8){
 					type='rock';
 				}
 				else if(generator<.9){
-					if (generator<.82) type='ore_iron'
-					else if (generator<.83) type ='ore_bronze'
-					else if (generator<.84) type = 'ore_silver'
-					else if (generator<.85) type = 'ore_gold'
-					else if (generator<.86) type = 'ore_platinum'
-					else if (generator<.87) type = 'ore_amethyst'
-					else if (generator<.88) type = 'ore_sapphire'
-					else if (generator<.885) type = 'ore_emerald'
-					else if (generator<.89) type = 'ore_ruby'
-					else if (generator<.895) type = 'ore_diamond'
+					let tValue=Math.random()*((Math.abs(x-600)+Math.abs(y-600)*1.0)/1200);
+					//console.log(tValue)
+					if (tValue<.01) type='ore_iron'
+					else if (tValue<.04) type ='ore_bronze'
+					else if (tValue<.08) type = 'ore_silver'
+					else if (tValue<.12) type = 'ore_gold'
+					else if (tValue<.17) type = 'ore_platinum'
+					else if (tValue<.22) type = 'ore_amethyst'
+					else if (tValue<.28) type = 'ore_sapphire'
+					else if (tValue<.34) type = 'ore_emerald'
+					else if (tValue<.4) type = 'ore_ruby'
+					else if (tValue<.5) type = 'ore_diamond'
 					else type = 'ore_alexandrite'
 				}
 				else{
@@ -34,7 +36,13 @@ export default class World{
 			}
 			this.grid.push(row);
 		}
-		//DEVELOPING NEW WORLD DEPLOYMENT ALGORITHM
+		//build world outer rim wall
+		for (let i=6;i<1193;i++){
+			this.grid[6][i].setType('empty');
+			this.grid[1192][i].setType('empty');
+			this.grid[i][6].setType('empty');
+			this.grid[i][1192].setType('empty');
+		}
 		//build spawn area
 		for (let x=598;x<603;x++){
 			for (let y=598;y<603;y++){

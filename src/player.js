@@ -5,16 +5,16 @@ export default class Player {
     this.x = 600;
     this.y = 600;
 
-    this.fuel = 100
+    this.fuel = 100000
     this.maxFuel = 100
     this.idleFuelUsage = 500
     this.fuelCounter = 0
 
 	  this.money = 0;
 
-    this.drillStrength = 10
+    this.drillStrength = 100
 
-    this.health = 100
+    this.health = 100000000
 
     this.maxStorage = 10
 	  this.usedStorage=0
