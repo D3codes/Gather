@@ -52,9 +52,45 @@ export default class Game{
 		this.images.upgrade.src = 'images/upgrade.png'
 		this.images.player.src = 'images/player.png'
 
+		this.sounds = {
+			engine1: new Audio('engine.wav'),
+			engine2: new Audio('engine.wav'),
+			engine3: new Audio('engine.wav'),
+			engine4: new Audio('engine.wav'),
+			engine5: new Audio('engine.wav'),
+			destroy1: new Audio('destroy.wav'),
+      destroy2: new Audio('destroy.wav'),
+      destroy3: new Audio('destroy.wav'),
+      destroy4: new Audio('destroy.wav'),
+			fuel: new Audio('fuel.wav'),
+			pickup1: new Audio('pickup.wav'),
+      pickup2: new Audio('pickup.wav'),
+      pickup3: new Audio('pickup.wav'),
+      pickup4: new Audio('pickup.wav'),
+			repair: new Audio('repair.wav'),
+			trade: new Audio('trade.wav'),
+			upgrade: new Audio('upgrade.wav'),
+			damage1: new Audio('damage.wav'),
+      damage2: new Audio('damage.wav'),
+      damage3: new Audio('damage.wav'),
+      damage4: new Audio('damage.wav')
+		}
+		this.sounds.engine1.loop = true
+		this.sounds.engine2.loop = true
+		this.sounds.engine3.loop = true
+		this.sounds.engine4.loop = true
+		this.sounds.engine5.loop = true
+		this.sounds.engine1.volume = 0.05
+		this.sounds.engine2.volume = 0.05
+		this.sounds.engine3.volume = 0.05
+		this.sounds.engine4.volume = 0.05
+		this.sounds.engine5.volume = 0.05
+		this.mute = false
+		this.START = true
+		this.STOP = false
 
 		this.world=new World(this.images);
-		this.player = new Player(this.images.player)
+		this.player = new Player(this.images.player, this.sounds)
 		this.info = new Info(this.images)
 		this.popup = new Popup()
 
@@ -87,13 +123,27 @@ export default class Game{
 				if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 429 && event.clientY < 454) {
 					this.world=new World(this.images);
-					this.player = new Player(this.images.player)
+					this.player = new Player(this.images.player, this.sounds)
 					this.info = new Info(this.images)
 					this.state = 'PLAY'
+					this.engineSound(this.START)
 				} else if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 390 && event.clientY < 414){
 					this.world=new World(this.images);
-					this.player = new Player(this.images.player)
+					this.player = new Player(this.images.player, this.sounds)
+					this.info = new Info(this.images)
+					this.state = 'START'
+				}
+			} else if(this.state === 'PAUSE') {
+				if(event.clientX > 278 && event.clientX < 378 &&
+					event.clientY > 429 && event.clientY < 454) {
+					this.state = 'PLAY'
+
+					this.engineSound(this.START)
+				} else if(event.clientX > 278 && event.clientX < 378 &&
+					event.clientY > 390 && event.clientY < 414){
+					this.world=new World(this.images);
+					this.player = new Player(this.images.player, this.sounds)
 					this.info = new Info(this.images)
 					this.state = 'START'
 				}
@@ -103,6 +153,7 @@ export default class Game{
 					this.state = 'PLAY'
 					this.player.x = 600
 					this.player.y = 600
+					this.engineSound(this.START)
 				}
 			} else if(this.state === 'UPGRADE') {
 				//increase fuel tank
@@ -114,18 +165,21 @@ export default class Game{
 								if(playerInfo.money >= 250) {
 									this.player.maxFuel = 150
 									this.player.money -= 250
+									this.sounds.upgrade.play()
 								}
 				        break
 				      case 150:
 								if(playerInfo.money >= 1000) {
 									this.player.maxFuel = 250
 									this.player.money -= 1000
+									this.sounds.upgrade.play()
 								}
 				        break
 				      case 250:
 								if(playerInfo.money >= 10000) {
 									this.player.maxFuel = 500
 									this.player.money -= 10000
+									this.sounds.upgrade.play()
 								}
 				        break
 
@@ -141,18 +195,21 @@ export default class Game{
 								if(playerInfo.money >= 500) {
 									this.player.drillStrength = 25
 									this.player.money -= 500
+									this.sounds.upgrade.play()
 								}
 				        break
 				      case 25:
 								if(playerInfo.money >= 1000) {
 									this.player.drillStrength = 50
 									this.player.money -= 1000
+									this.sounds.upgrade.play()
 								}
 				        break
 				      case 50:
 								if(playerInfo.money >= 5000) {
 									this.player.drillStrength = 100
 									this.player.money -= 5000
+									this.sounds.upgrade.play()
 								}
 				        break
 
@@ -168,18 +225,21 @@ export default class Game{
 								if(playerInfo.money >= 500) {
 									this.player.maxStorage = 25
 									this.player.money -= 500
+									this.sounds.upgrade.play()
 								}
 				        break
 				      case 25:
 								if(playerInfo.money >= 2000) {
 									this.player.maxStorage = 50
 									this.player.money -= 2000
+									this.sounds.upgrade.play()
 								}
 				        break
 				      case 50:
 								if(playerInfo.money >= 5000) {
 									this.player.maxStorage = 100
 									this.player.money -= 5000
+									this.sounds.upgrade.play()
 								}
 				        break
 
@@ -199,10 +259,15 @@ export default class Game{
 
 		document.body.appendChild(this.screenBufferCanvas);
 		this.screenBufferContext = this.screenBufferCanvas.getContext('2d');
+
 		// Bind class functions
 		this.update = this.update.bind(this);
 		this.render = this.render.bind(this);
 		this.loop = this.loop.bind(this);
+		this.handleKeyDown = this.handleKeyDown.bind(this)
+		this.engineSound = this.engineSound.bind(this)
+
+		window.addEventListener('keydown', this.handleKeyDown)
 		//Start the game loop
 		this.interval=setInterval(this.loop, 1);
 	}
@@ -212,7 +277,10 @@ export default class Game{
 			this.player.x = 599
 			this.player.y = 601
 		}
-		if(this.player.getInfo().health <= 0) this.state = 'GAME OVER'
+		if(this.player.getInfo().health <= 0) {
+			this.engineSound(this.STOP)
+			this.state = 'GAME OVER'
+		}
 
 		if(this.state === 'PLAY') {
 			let playerUpdate=this.world.update(this.player.getPosition(), this.player.getInfo(), this);
@@ -243,5 +311,54 @@ export default class Game{
 	loop(){
 		this.update();
 		this.render();
+	}
+
+	engineSound(start) {
+		if(start) {
+			if(!this.mute) {
+				this.sounds.engine2.currentTime = 0.1
+				this.sounds.engine3.currentTime = 0.2
+				this.sounds.engine4.currentTime = 0.3
+				this.sounds.engine5.currentTime = 0.4
+				this.sounds.engine1.play()
+				this.sounds.engine2.play()
+				this.sounds.engine3.play()
+				this.sounds.engine4.play()
+				this.sounds.engine5.play()
+			}
+		} else {
+			this.sounds.engine1.pause()
+			this.sounds.engine2.pause()
+			this.sounds.engine3.pause()
+			this.sounds.engine4.pause()
+			this.sounds.engine5.pause()
+		}
+	}
+
+	handleKeyDown(event) {
+		switch(event.key) {
+			case 'Escape':
+				if(this.state === 'PLAY') {
+					this.state = 'PAUSE'
+					this.engineSound(this.STOP)
+				}
+				else if(this.state === 'PAUSE') {
+					this.engineSound(this.START)
+					this.state = 'PLAY'
+				}
+				break
+
+			case 'm':
+				if(this.mute) {
+					this.mute = false
+					this.engineSound(this.START)
+				} else {
+					this.mute = true
+					this.engineSound(this.STOP)
+				}
+				break
+
+			default:
+		}
 	}
 }

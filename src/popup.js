@@ -159,6 +159,25 @@ export default class Popup {
 			ctx.fillStyle = 'white'
 			ctx.font = '20px Verdana'
 			ctx.fillText('Start', 273, 420)
+    } else if (this.state === 'PAUSE') {
+      ctx.fillStyle = 'white'
+			ctx.fillRect(100, 150, 400, 300)
+
+			ctx.font = '20px Verdana'
+			ctx.fillStyle = 'red'
+			ctx.fillText('PAUSE', 267, 200)
+
+      ctx.fillStyle = 'red'
+			ctx.fillRect(250, 360, 100, 25)
+			ctx.fillStyle = 'white'
+			ctx.font = '20px Verdana'
+			ctx.fillText('Menu', 272, 380)
+
+			ctx.fillStyle = 'red'
+			ctx.fillRect(250, 400, 100, 25)
+			ctx.fillStyle = 'white'
+			ctx.font = '20px Verdana'
+			ctx.fillText('Resume', 260, 420)
     }
   }
 }
