@@ -68,12 +68,12 @@ export default class World{
 		total+=inventory.silver*80
 		total+=inventory.gold*100
 		total+=inventory.platinum*150
-		total+=inventory.amethyst*20
-		total+=inventory.sapphire*120
-		total+=inventory.emerald*120
-		total+=inventory.ruby*120
-		total+=inventory.diamond*200
-		total+=inventory.alexandrite*250
+		total+=inventory.amethyst*200
+		total+=inventory.sapphire*300
+		total+=inventory.emerald*400
+		total+=inventory.ruby*500
+		total+=inventory.diamond*1000
+		total+=inventory.alexandrite*2500
 
 		return total;
 	}
