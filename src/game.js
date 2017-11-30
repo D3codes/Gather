@@ -57,7 +57,23 @@ export default class Game{
 			engine2: new Audio('engine.wav'),
 			engine3: new Audio('engine.wav'),
 			engine4: new Audio('engine.wav'),
-			engine5: new Audio('engine.wav')
+			engine5: new Audio('engine.wav'),
+			destroy1: new Audio('destroy.wav'),
+      destroy2: new Audio('destroy.wav'),
+      destroy3: new Audio('destroy.wav'),
+      destroy4: new Audio('destroy.wav'),
+			fuel: new Audio('fuel.wav'),
+			pickup1: new Audio('pickup.wav'),
+      pickup2: new Audio('pickup.wav'),
+      pickup3: new Audio('pickup.wav'),
+      pickup4: new Audio('pickup.wav'),
+			repair: new Audio('repair.wav'),
+			trade: new Audio('trade.wav'),
+			upgrade: new Audio('upgrade.wav'),
+			damage1: new Audio('damage.wav'),
+      damage2: new Audio('damage.wav'),
+      damage3: new Audio('damage.wav'),
+      damage4: new Audio('damage.wav')
 		}
 		this.sounds.engine1.loop = true
 		this.sounds.engine2.loop = true
@@ -72,7 +88,7 @@ export default class Game{
 		this.mute = false
 
 		this.world=new World(this.images);
-		this.player = new Player(this.images.player)
+		this.player = new Player(this.images.player, this.sounds)
 		this.info = new Info(this.images)
 		this.popup = new Popup()
 
@@ -105,7 +121,7 @@ export default class Game{
 				if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 429 && event.clientY < 454) {
 					this.world=new World(this.images);
-					this.player = new Player(this.images.player)
+					this.player = new Player(this.images.player, this.sounds)
 					this.info = new Info(this.images)
 					this.state = 'PLAY'
 
@@ -123,7 +139,7 @@ export default class Game{
 				} else if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 390 && event.clientY < 414){
 					this.world=new World(this.images);
-					this.player = new Player(this.images.player)
+					this.player = new Player(this.images.player, this.sounds)
 					this.info = new Info(this.images)
 					this.state = 'START'
 				}
@@ -146,7 +162,7 @@ export default class Game{
 				} else if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 390 && event.clientY < 414){
 					this.world=new World(this.images);
-					this.player = new Player(this.images.player)
+					this.player = new Player(this.images.player, this.sounds)
 					this.info = new Info(this.images)
 					this.state = 'START'
 				}

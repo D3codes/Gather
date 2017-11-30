@@ -1,24 +1,7 @@
 export default class Player {
-  constructor(image) {
+  constructor(image, sounds) {
     this.image = image
-    this.sounds = {
-      destroy1: new Audio('destroy.wav'),
-      destroy2: new Audio('destroy.wav'),
-      destroy3: new Audio('destroy.wav'),
-      destroy4: new Audio('destroy.wav'),
-			fuel: new Audio('fuel.wav'),
-			pickup1: new Audio('pickup.wav'),
-      pickup2: new Audio('pickup.wav'),
-      pickup3: new Audio('pickup.wav'),
-      pickup4: new Audio('pickup.wav'),
-			repair: new Audio('repair.wav'),
-			trade: new Audio('trade.wav'),
-			upgrade: new Audio('upgrade.wav'),
-			damage1: new Audio('damage.wav'),
-      damage2: new Audio('damage.wav'),
-      damage3: new Audio('damage.wav'),
-      damage4: new Audio('damage.wav')
-    }
+    this.sounds = sounds
     this.soundCounter = 1
 
     this.x = 600;
