@@ -265,6 +265,7 @@ export default class Game{
 		this.render = this.render.bind(this);
 		this.loop = this.loop.bind(this);
 		this.handleKeyDown = this.handleKeyDown.bind(this)
+		this.engineSound = this.engineSound.bind(this)
 
 		window.addEventListener('keydown', this.handleKeyDown)
 		//Start the game loop
