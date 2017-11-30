@@ -69,6 +69,7 @@ export default class Game{
 		this.sounds.engine3.volume = 0.05
 		this.sounds.engine4.volume = 0.05
 		this.sounds.engine5.volume = 0.05
+		this.mute = false
 
 		this.world=new World(this.images);
 		this.player = new Player(this.images.player)
@@ -108,15 +109,40 @@ export default class Game{
 					this.info = new Info(this.images)
 					this.state = 'PLAY'
 
-					this.sounds.engine2.currentTime = 0.1
-					this.sounds.engine3.currentTime = 0.2
-					this.sounds.engine4.currentTime = 0.3
-					this.sounds.engine5.currentTime = 0.4
-					this.sounds.engine1.play()
-					this.sounds.engine2.play()
-					this.sounds.engine3.play()
-					this.sounds.engine4.play()
-					this.sounds.engine5.play()
+					if(!this.mute) {
+						this.sounds.engine2.currentTime = 0.1
+						this.sounds.engine3.currentTime = 0.2
+						this.sounds.engine4.currentTime = 0.3
+						this.sounds.engine5.currentTime = 0.4
+						this.sounds.engine1.play()
+						this.sounds.engine2.play()
+						this.sounds.engine3.play()
+						this.sounds.engine4.play()
+						this.sounds.engine5.play()
+					}
+				} else if(event.clientX > 278 && event.clientX < 378 &&
+					event.clientY > 390 && event.clientY < 414){
+					this.world=new World(this.images);
+					this.player = new Player(this.images.player)
+					this.info = new Info(this.images)
+					this.state = 'START'
+				}
+			} else if(this.state === 'PAUSE') {
+				if(event.clientX > 278 && event.clientX < 378 &&
+					event.clientY > 429 && event.clientY < 454) {
+					this.state = 'PLAY'
+
+					if(!this.mute) {
+						this.sounds.engine2.currentTime = 0.1
+						this.sounds.engine3.currentTime = 0.2
+						this.sounds.engine4.currentTime = 0.3
+						this.sounds.engine5.currentTime = 0.4
+						this.sounds.engine1.play()
+						this.sounds.engine2.play()
+						this.sounds.engine3.play()
+						this.sounds.engine4.play()
+						this.sounds.engine5.play()
+					}
 				} else if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 390 && event.clientY < 414){
 					this.world=new World(this.images);
@@ -131,15 +157,17 @@ export default class Game{
 					this.player.x = 600
 					this.player.y = 600
 
-					this.sounds.engine2.currentTime = 0.1
-					this.sounds.engine3.currentTime = 0.2
-					this.sounds.engine4.currentTime = 0.3
-					this.sounds.engine5.currentTime = 0.4
-					this.sounds.engine1.play()
-					this.sounds.engine2.play()
-					this.sounds.engine3.play()
-					this.sounds.engine4.play()
-					this.sounds.engine5.play()
+					if(!this.mute) {
+						this.sounds.engine2.currentTime = 0.1
+						this.sounds.engine3.currentTime = 0.2
+						this.sounds.engine4.currentTime = 0.3
+						this.sounds.engine5.currentTime = 0.4
+						this.sounds.engine1.play()
+						this.sounds.engine2.play()
+						this.sounds.engine3.play()
+						this.sounds.engine4.play()
+						this.sounds.engine5.play()
+					}
 				}
 			} else if(this.state === 'UPGRADE') {
 				//increase fuel tank
@@ -245,10 +273,14 @@ export default class Game{
 
 		document.body.appendChild(this.screenBufferCanvas);
 		this.screenBufferContext = this.screenBufferCanvas.getContext('2d');
+
 		// Bind class functions
 		this.update = this.update.bind(this);
 		this.render = this.render.bind(this);
 		this.loop = this.loop.bind(this);
+		this.handleKeyDown = this.handleKeyDown.bind(this)
+
+		window.addEventListener('keydown', this.handleKeyDown)
 		//Start the game loop
 		this.interval=setInterval(this.loop, 1);
 	}
@@ -296,5 +328,57 @@ export default class Game{
 	loop(){
 		this.update();
 		this.render();
+	}
+
+	handleKeyDown(event) {
+		switch(event.key) {
+			case 'Escape':
+				if(this.state === 'PLAY') {
+					this.state = 'PAUSE'
+					this.sounds.engine1.pause()
+					this.sounds.engine2.pause()
+					this.sounds.engine3.pause()
+					this.sounds.engine4.pause()
+					this.sounds.engine5.pause()
+				}
+				else if(this.state === 'PAUSE') {
+					if(!this.mute) {
+						this.sounds.engine2.currentTime = 0.1
+						this.sounds.engine3.currentTime = 0.2
+						this.sounds.engine4.currentTime = 0.3
+						this.sounds.engine5.currentTime = 0.4
+						this.sounds.engine1.play()
+						this.sounds.engine2.play()
+						this.sounds.engine3.play()
+						this.sounds.engine4.play()
+						this.sounds.engine5.play()
+					}
+					this.state = 'PLAY'
+				}
+				break
+
+			case 'm':
+				if(this.mute) {
+					this.sounds.engine2.currentTime = 0.1
+					this.sounds.engine3.currentTime = 0.2
+					this.sounds.engine4.currentTime = 0.3
+					this.sounds.engine5.currentTime = 0.4
+					this.sounds.engine1.play()
+					this.sounds.engine2.play()
+					this.sounds.engine3.play()
+					this.sounds.engine4.play()
+					this.sounds.engine5.play()
+				} else {
+					this.sounds.engine1.pause()
+					this.sounds.engine2.pause()
+					this.sounds.engine3.pause()
+					this.sounds.engine4.pause()
+					this.sounds.engine5.pause()
+				}
+				this.mute = !this.mute
+				break
+
+			default:
+		}
 	}
 }
