@@ -1,7 +1,15 @@
 export default class Tile{
 	constructor(type){
-		//tile types are empty, rock, wood, and ore.
+		//tile types are empty, rock, wood_wood, and ore_*type*.
 		this.type=type;
+		this.rotation = 0
+		if(this.type !== 'wood_wood') {
+			let rand = Math.random()
+			if(rand < 0.25) this.rotation = 0
+			else if(rand < 0.5) this.rotation = Math.PI/2
+			else if(rand < 0.75) this.rotation = Math.PI
+			else this.rotation = Math.PI+Math.PI/2
+		}
 
 		//bind class methods
 		this.update=this.update.bind(this);
@@ -13,11 +21,16 @@ export default class Tile{
 	}
 
 	render(ctx,x,y, images){
-		ctx.drawImage(images[this.type], x*40, y*40, 40, 40)
+		ctx.save()
+		ctx.translate(x*40+20, y*40+20)
+		ctx.rotate(this.rotation)
+		ctx.drawImage(images[this.type], -20, -20, 40, 40)
+		ctx.restore()
 	}
 
 	setType(type){
 		this.type=type;
+		this.rotation = 0
 	}
 
 	getInfo(){

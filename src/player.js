@@ -17,6 +17,8 @@ export default class Player {
     this.drillStrength = 10
 
     this.health = 100
+    this.damagePer = 5
+    this.damageCounter = 0
 
     this.maxStorage = 10
 	  this.usedStorage=0
@@ -69,7 +71,12 @@ export default class Player {
       if(updateInfo.amount > 0) this.sounds.repair.play()
     }
     else if(updateInfo.type === 'rock') {
-      if(this.fuel > 0) this.fuel-=3
+      if(this.fuel > 0) this.fuel-=2
+      this.damageCounter++
+      if(this.damageCounter >= this.damagePer) {
+        this.health--
+        this.damageCounter = 0
+      }
     } else if(updateInfo.type === 'damage') {
       if(this.health > 0){
         this.health -= updateInfo.amount
@@ -98,7 +105,12 @@ export default class Player {
     } else if(updateInfo.type === 'upgrade') {
       //DO NOTHING - DONT REMOVE THIS!!
     }
-		else if (updateInfo.type!=='empty' && updateInfo.type !== 'rock'){
+		else if (updateInfo.type!=='empty'){
+      this.damageCounter++
+      if(this.damageCounter >= this.damagePer) {
+        this.health--
+        this.damageCounter = 0
+      }
       if(updateInfo.type === 'wood_wood') if(this.fuel > 0) this.fuel--
       else {
         if(this.fuel > 2) this.fuel-=3
@@ -114,6 +126,7 @@ export default class Player {
       }
 		}
 
+    //idle fuel usage
     this.fuelCounter++
     if(this.fuelCounter >= this.idleFuelUsage) {
       this.fuelCounter = 0
