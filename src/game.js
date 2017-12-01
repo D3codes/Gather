@@ -345,6 +345,10 @@ export default class Game{
 				else if(this.state === 'PAUSE') {
 					this.engineSound(this.START)
 					this.state = 'PLAY'
+				} else if(this.state === 'UPGRADE') {
+					this.state = 'PLAY'
+					this.player.x = 600
+					this.player.y = 600
 				}
 				break
 

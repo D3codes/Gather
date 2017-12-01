@@ -17,7 +17,7 @@ export default class Player {
     this.drillStrength = 10
 
     this.health = 100
-    this.damagePer = 5
+    this.hullStrength = 5
     this.damageCounter = 0
 
     this.maxStorage = 10
@@ -73,7 +73,7 @@ export default class Player {
     else if(updateInfo.type === 'rock') {
       if(this.fuel > 0) this.fuel-=2
       this.damageCounter++
-      if(this.damageCounter >= this.damagePer) {
+      if(this.damageCounter >= this.hullStrength) {
         this.health--
         this.damageCounter = 0
       }
@@ -107,7 +107,7 @@ export default class Player {
     }
 		else if (updateInfo.type!=='empty'){
       this.damageCounter++
-      if(this.damageCounter >= this.damagePer) {
+      if(this.damageCounter >= this.hullStrength) {
         this.health--
         this.damageCounter = 0
       }
