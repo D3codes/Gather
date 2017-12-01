@@ -7,16 +7,16 @@ export default class Player {
     this.x = 600;
     this.y = 600;
 
-    this.fuel = 100000
+    this.fuel = 100
     this.maxFuel = 100
     this.idleFuelUsage = 500
     this.fuelCounter = 0
 
 	  this.money = 0;
 
-    this.drillStrength = 100
+    this.drillStrength = 10
 
-    this.health = 100000000
+    this.health = 100
 
     this.maxStorage = 10
 	  this.usedStorage=0
@@ -69,7 +69,7 @@ export default class Player {
       if(updateInfo.amount > 0) this.sounds.repair.play()
     }
     else if(updateInfo.type === 'rock') {
-      if(this.fuel > 0) this.fuel--
+      if(this.fuel > 0) this.fuel-=3
     } else if(updateInfo.type === 'damage') {
       if(this.health > 0){
         this.health -= updateInfo.amount
@@ -101,8 +101,8 @@ export default class Player {
 		else if (updateInfo.type!=='empty' && updateInfo.type !== 'rock'){
       if(updateInfo.type === 'wood_wood') if(this.fuel > 0) this.fuel--
       else {
-        if(this.fuel > 1) this.fuel-=2
-        else if(this.fuel > 0) this.fuel--
+        if(this.fuel > 2) this.fuel-=3
+        else this.fuel = 0
       }
 
 			if(this.usedStorage < this.maxStorage) {

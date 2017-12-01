@@ -162,22 +162,22 @@ export default class Game{
 					event.clientY > 289 && event.clientY < 313) {
 						switch(playerInfo.maxFuel) {
 				      case 100:
-								if(playerInfo.money >= 250) {
-									this.player.maxFuel = 150
-									this.player.money -= 250
-									this.sounds.upgrade.play()
-								}
-				        break
-				      case 150:
-								if(playerInfo.money >= 1000) {
+								if(playerInfo.money >= 1500) {
 									this.player.maxFuel = 250
-									this.player.money -= 1000
+									this.player.money -= 1500
 									this.sounds.upgrade.play()
 								}
 				        break
 				      case 250:
-								if(playerInfo.money >= 10000) {
+								if(playerInfo.money >= 3500) {
 									this.player.maxFuel = 500
+									this.player.money -= 3500
+									this.sounds.upgrade.play()
+								}
+				        break
+				      case 500:
+								if(playerInfo.money >= 10000) {
+									this.player.maxFuel = 1000
 									this.player.money -= 10000
 									this.sounds.upgrade.play()
 								}
@@ -192,23 +192,23 @@ export default class Game{
 					event.clientY > 360 && event.clientY < 383) {
 						switch(playerInfo.drillStrength) {
 				      case 10:
-								if(playerInfo.money >= 500) {
+								if(playerInfo.money >= 2000) {
 									this.player.drillStrength = 25
-									this.player.money -= 500
+									this.player.money -= 2000
 									this.sounds.upgrade.play()
 								}
 				        break
 				      case 25:
-								if(playerInfo.money >= 1000) {
+								if(playerInfo.money >= 5000) {
 									this.player.drillStrength = 50
-									this.player.money -= 1000
+									this.player.money -= 5000
 									this.sounds.upgrade.play()
 								}
 				        break
 				      case 50:
-								if(playerInfo.money >= 5000) {
+								if(playerInfo.money >= 20000) {
 									this.player.drillStrength = 100
-									this.player.money -= 5000
+									this.player.money -= 20000
 									this.sounds.upgrade.play()
 								}
 				        break
@@ -222,23 +222,23 @@ export default class Game{
 					event.clientY > 430 && event.clientY < 453) {
 						switch(playerInfo.maxStorage) {
 				      case 10:
-								if(playerInfo.money >= 500) {
-									this.player.maxStorage = 25
-									this.player.money -= 500
+								if(playerInfo.money >= 1500) {
+									this.player.maxStorage = 30
+									this.player.money -= 1500
 									this.sounds.upgrade.play()
 								}
 				        break
-				      case 25:
-								if(playerInfo.money >= 2000) {
-									this.player.maxStorage = 50
-									this.player.money -= 2000
+				      case 30:
+								if(playerInfo.money >= 2500) {
+									this.player.maxStorage = 80
+									this.player.money -= 2500
 									this.sounds.upgrade.play()
 								}
 				        break
-				      case 50:
-								if(playerInfo.money >= 5000) {
+				      case 80:
+								if(playerInfo.money >= 10000) {
 									this.player.maxStorage = 100
-									this.player.money -= 5000
+									this.player.money -= 10000
 									this.sounds.upgrade.play()
 								}
 				        break

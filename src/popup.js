@@ -9,15 +9,15 @@ export default class Popup {
     switch(playerInfo.drillStrength) {
       case 10:
         this.drillUpgrade = 25
-        this.drillUpgradeCost = 500
+        this.drillUpgradeCost = 2000
         break
       case 25:
         this.drillUpgrade = 50
-        this.drillUpgradeCost = 1000
+        this.drillUpgradeCost = 5000
         break
       case 50:
         this.drillUpgrade = 100
-        this.drillUpgradeCost = 5000
+        this.drillUpgradeCost = 20000
         break
       default:
         this.drillUpgrade = undefined
@@ -26,15 +26,15 @@ export default class Popup {
 
     switch(playerInfo.maxFuel) {
       case 100:
-        this.fuelUpgrade = 150
-        this.fuelUpgradeCost = 250
-        break
-      case 150:
         this.fuelUpgrade = 250
-        this.fuelUpgradeCost = 1000
+        this.fuelUpgradeCost = 1500
         break
       case 250:
         this.fuelUpgrade = 500
+        this.fuelUpgradeCost = 3500
+        break
+      case 500:
+        this.fuelUpgrade = 1000
         this.fuelUpgradeCost = 10000
         break
       default:
@@ -44,16 +44,16 @@ export default class Popup {
 
     switch(playerInfo.maxStorage) {
       case 10:
-        this.storageUpgrade = 25
-        this.storageUpgradeCost = 500
+        this.storageUpgrade = 30
+        this.storageUpgradeCost = 1500
         break
-      case 25:
-        this.storageUpgrade = 50
-        this.storageUpgradeCost = 2000
+      case 30:
+        this.storageUpgrade = 80
+        this.storageUpgradeCost = 2500
         break
-      case 50:
+      case 80:
         this.storageUpgrade = 100
-        this.storageUpgradeCost = 5000
+        this.storageUpgradeCost = 10000
         break
       default:
         this.storageUpgrade = undefined
