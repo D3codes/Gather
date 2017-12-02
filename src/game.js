@@ -119,6 +119,7 @@ export default class Game{
 		this.screenBufferCanvas.width = 800;
 		this.screenBufferCanvas.height = 600;
 		this.screenBufferCanvas.onmousedown = (event) => {
+			console.log(event.clientX, event.clientY)
 			if(this.state === 'GAME OVER') {
 				if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 429 && event.clientY < 454) {
@@ -159,7 +160,7 @@ export default class Game{
 				//increase fuel tank
 				let playerInfo = this.player.getInfo()
 				if(event.clientX > 409 && event.clientX < 509 &&
-					event.clientY > 289 && event.clientY < 313) {
+					event.clientY > 280 && event.clientY < 303) {
 						switch(playerInfo.maxFuel) {
 				      case 100:
 								if(playerInfo.money >= 1500) {
@@ -187,9 +188,39 @@ export default class Game{
 				    }
 				}
 
+				//increase hull strength
+				if(event.clientX > 409 && event.clientX < 509 &&
+					event.clientY > 329 && event.clientY < 353) {
+						switch(playerInfo.hullStrength) {
+				      case 5:
+								if(playerInfo.money >= 2000) {
+									this.player.hullStrength = 10
+									this.player.money -= 2000
+									this.sounds.upgrade.play()
+								}
+				        break
+				      case 10:
+								if(playerInfo.money >= 5000) {
+									this.player.hullStrength = 25
+									this.player.money -= 5000
+									this.sounds.upgrade.play()
+								}
+				        break
+				      case 25:
+								if(playerInfo.money >= 10000) {
+									this.player.hullStrength = 50
+									this.player.money -= 10000
+									this.sounds.upgrade.play()
+								}
+				        break
+
+							default:
+				    }
+				}
+
 				//increase drill Strength
 				if(event.clientX > 409 && event.clientX < 509 &&
-					event.clientY > 360 && event.clientY < 383) {
+					event.clientY > 380 && event.clientY < 403) {
 						switch(playerInfo.drillStrength) {
 				      case 10:
 								if(playerInfo.money >= 2000) {

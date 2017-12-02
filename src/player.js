@@ -167,7 +167,8 @@ export default class Player {
       inventory:this.inventory,
       money:this.money,
       usedStorage:this.usedStorage,
-      maxStorage:this.maxStorage
+      maxStorage:this.maxStorage,
+      hullStrength: this.hullStrength
     };
   }
 

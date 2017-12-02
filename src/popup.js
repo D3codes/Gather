@@ -59,6 +59,24 @@ export default class Popup {
         this.storageUpgrade = undefined
         this.storageUpgradeCost = undefined
     }
+
+    switch(playerInfo.hullStrength) {
+      case 5:
+        this.hullUpgrade = 10
+        this.hullUpgradeCost = 2000
+        break
+      case 10:
+        this.hullUpgrade = 25
+        this.hullUpgradeCost = 5000
+        break
+      case 25:
+        this.hullUpgrade = 50
+        this.hullUpgradeCost = 10000
+        break
+      default:
+        this.storageUpgrade = undefined
+        this.storageUpgradeCost = undefined
+    }
   }
 
   render(ctx) {
@@ -93,34 +111,50 @@ export default class Popup {
       //Fuel Tank Upgrade
       if(this.fuelUpgrade) {
         ctx.fillStyle = 'red'
-        ctx.fillRect(380, 260, 100, 25)
+        ctx.fillRect(380, 250, 100, 25)
         ctx.fillStyle = 'white'
         ctx.font = '20px Verdana'
-        ctx.fillText('Buy', 410, 280)
+        ctx.fillText('Buy', 410, 270)
         ctx.fillStyle = 'black'
         ctx.font = '12px Verdana'
-        ctx.fillText('Upgrade Fuel Tank to ' + this.fuelUpgrade + ' for $' + this.fuelUpgradeCost, 110, 280)
+        ctx.fillText('Upgrade Fuel Tank to ' + this.fuelUpgrade + ' for $' + this.fuelUpgradeCost, 110, 270)
       }
       else {
         ctx.fillStyle = 'black'
         ctx.font = '12px Verdana'
-        ctx.fillText('Fuel Tank upgraded to maximum capacity', 180, 280)
+        ctx.fillText('Fuel Tank upgraded to maximum capacity', 180, 270)
+      }
+
+      //Hull Strength Upgrade
+      if(this.hullUpgrade) {
+        ctx.fillStyle = 'red'
+        ctx.fillRect(380, 300, 100, 25)
+        ctx.fillStyle = 'white'
+        ctx.font = '20px Verdana'
+        ctx.fillText('Buy', 410, 320)
+        ctx.fillStyle = 'black'
+        ctx.font = '12px Verdana'
+        ctx.fillText('Upgrade Hull Strength to ' + this.hullUpgrade + ' for $' + this.hullUpgradeCost, 110, 320)
+      } else {
+        ctx.fillStyle = 'black'
+        ctx.font = '12px Verdana'
+        ctx.fillText('Drill upgraded to maximum strength', 180, 320)
       }
 
       //Drill Strength Upgrade
       if(this.drillUpgrade) {
         ctx.fillStyle = 'red'
-        ctx.fillRect(380, 330, 100, 25)
+        ctx.fillRect(380, 350, 100, 25)
         ctx.fillStyle = 'white'
         ctx.font = '20px Verdana'
-        ctx.fillText('Buy', 410, 350)
+        ctx.fillText('Buy', 410, 370)
         ctx.fillStyle = 'black'
         ctx.font = '12px Verdana'
-        ctx.fillText('Upgrade Drill Strength to ' + this.drillUpgrade + ' for $' + this.drillUpgradeCost, 110, 350)
+        ctx.fillText('Upgrade Drill Strength to ' + this.drillUpgrade + ' for $' + this.drillUpgradeCost, 110, 370)
       } else {
         ctx.fillStyle = 'black'
         ctx.font = '12px Verdana'
-        ctx.fillText('Drill upgraded to maximum strength', 180, 350)
+        ctx.fillText('Drill upgraded to maximum strength', 180, 370)
       }
 
       //Storage Upgrade
