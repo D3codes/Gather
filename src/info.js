@@ -45,7 +45,7 @@ export default class Info {
     ctx.fillText('Iron', 90, 230)
     ctx.drawImage(this.images.ore_iron, 75, 235, 50, 50)
     ctx.font = '15px Verdana'
-    ctx.fillText(player.inventory.iron, 75+25, 210+45)
+    ctx.fillText(player.inventory.iron, 75+25, 210+45+25)
 
     ctx.fillStyle = 'white'
     ctx.font = '10px Verdana'

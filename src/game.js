@@ -119,7 +119,6 @@ export default class Game{
 		this.screenBufferCanvas.width = 800;
 		this.screenBufferCanvas.height = 600;
 		this.screenBufferCanvas.onmousedown = (event) => {
-			console.log(event.clientX, event.clientY)
 			if(this.state === 'GAME OVER') {
 				if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 429 && event.clientY < 454) {
@@ -164,21 +163,21 @@ export default class Game{
 						switch(playerInfo.maxFuel) {
 				      case 100:
 								if(playerInfo.money >= 1500) {
-									this.player.maxFuel = 250
+									this.player.maxFuel = 300
 									this.player.money -= 1500
 									this.sounds.upgrade.play()
 								}
 				        break
-				      case 250:
+				      case 300:
 								if(playerInfo.money >= 3500) {
-									this.player.maxFuel = 500
+									this.player.maxFuel = 750
 									this.player.money -= 3500
 									this.sounds.upgrade.play()
 								}
 				        break
-				      case 500:
+				      case 750:
 								if(playerInfo.money >= 10000) {
-									this.player.maxFuel = 1000
+									this.player.maxFuel = 2000
 									this.player.money -= 10000
 									this.sounds.upgrade.play()
 								}

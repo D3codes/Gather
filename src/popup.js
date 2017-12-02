@@ -26,15 +26,15 @@ export default class Popup {
 
     switch(playerInfo.maxFuel) {
       case 100:
-        this.fuelUpgrade = 250
+        this.fuelUpgrade = 300
         this.fuelUpgradeCost = 1500
         break
-      case 250:
-        this.fuelUpgrade = 500
+      case 300:
+        this.fuelUpgrade = 750
         this.fuelUpgradeCost = 3500
         break
-      case 500:
-        this.fuelUpgrade = 1000
+      case 750:
+        this.fuelUpgrade = 2000
         this.fuelUpgradeCost = 10000
         break
       default:

@@ -71,7 +71,7 @@ export default class Player {
       if(updateInfo.amount > 0) this.sounds.repair.play()
     }
     else if(updateInfo.type === 'rock') {
-      if(this.fuel > 0) this.fuel-=2
+      if(this.fuel > 0) this.fuel-=1
       this.damageCounter++
       if(this.damageCounter >= this.hullStrength) {
         this.health--
@@ -113,7 +113,7 @@ export default class Player {
       }
       if(updateInfo.type === 'wood_wood') if(this.fuel > 0) this.fuel--
       else {
-        if(this.fuel > 2) this.fuel-=3
+        if(this.fuel > 1) this.fuel-=2
         else this.fuel = 0
       }
 
