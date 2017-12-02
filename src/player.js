@@ -9,7 +9,7 @@ export default class Player {
 
     this.fuel = 100
     this.maxFuel = 100
-    this.idleFuelUsage = 500
+    this.idleFuelUsage = 90
     this.fuelCounter = 0
 
 	  this.money = 0;

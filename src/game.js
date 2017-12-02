@@ -299,7 +299,7 @@ export default class Game{
 
 		window.addEventListener('keydown', this.handleKeyDown)
 		//Start the game loop
-		this.interval=setInterval(this.loop, 1);
+		this.interval=setInterval(this.loop, 1000/30);
 	}
 
 	update(){
