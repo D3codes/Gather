@@ -37,11 +37,12 @@ export default class World{
 			this.grid.push(row);
 		}
 		//build world outer rim wall
-		for (let i=6;i<1193;i++){
-			this.grid[6][i].setType('empty');
-			this.grid[1192][i].setType('empty');
-			this.grid[i][6].setType('empty');
-			this.grid[i][1192].setType('empty');
+		for(var i = 0; i < 1200; i++) {
+			for(var j = 0; j < 1200; j++) {
+				if(i <=6 || j <= 6 || i >= 1192 || j >= 1192) {
+					this.grid[i][j].setType('bedrock')
+				}
+			}
 		}
 		//build spawn area
 		for (let x=598;x<603;x++){

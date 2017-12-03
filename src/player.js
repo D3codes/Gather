@@ -17,7 +17,7 @@ export default class Player {
     this.drillStrength = 10
 
     this.health = 100
-    this.hullStrength = 5
+    this.hullStrength = 10
     this.damageCounter = 0
 
     this.maxStorage = 10
@@ -40,6 +40,15 @@ export default class Player {
     this.handleKeyDown = this.handleKeyDown.bind(this)
     this.lastMove = 'right'
     window.addEventListener('keydown', this.handleKeyDown)
+  }
+
+  maxOut() {
+    this.money = 9999999
+    this.fuel = 2000
+    this.maxFuel = 2000
+    this.drillStrength = 100
+    this.hullStrength = 50
+    this.maxStorage = 100
   }
 
 	update(updateInfo) {

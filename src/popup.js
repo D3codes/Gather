@@ -48,10 +48,10 @@ export default class Popup {
         this.storageUpgradeCost = 1500
         break
       case 30:
-        this.storageUpgrade = 80
+        this.storageUpgrade = 60
         this.storageUpgradeCost = 2500
         break
-      case 80:
+      case 60:
         this.storageUpgrade = 100
         this.storageUpgradeCost = 10000
         break

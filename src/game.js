@@ -29,7 +29,8 @@ export default class Game{
 			fuel: new Image(),
 			repair: new Image(),
 			upgrade: new Image(),
-			player: new Image()
+			player: new Image(),
+			bedrock: new Image()
 		}
 
 		this.images.empty.src = 'images/empty.png'
@@ -51,6 +52,7 @@ export default class Game{
 		this.images.repair.src = 'images/repair.png'
 		this.images.upgrade.src = 'images/upgrade.png'
 		this.images.player.src = 'images/player.png'
+		this.images.bedrock.src = 'images/bedrock.png'
 
 		this.sounds = {
 			engine1: new Audio('engine.wav'),
@@ -260,12 +262,12 @@ export default class Game{
 				        break
 				      case 30:
 								if(playerInfo.money >= 2500) {
-									this.player.maxStorage = 80
+									this.player.maxStorage = 60
 									this.player.money -= 2500
 									this.sounds.upgrade.play()
 								}
 				        break
-				      case 80:
+				      case 60:
 								if(playerInfo.money >= 10000) {
 									this.player.maxStorage = 100
 									this.player.money -= 10000
@@ -390,6 +392,10 @@ export default class Game{
 					this.mute = true
 					this.engineSound(this.STOP)
 				}
+				break
+
+			case 'p':
+				this.player.maxOut()
 				break
 
 			default:
