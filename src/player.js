@@ -194,6 +194,7 @@ export default class Player {
     if(this.health <= 0) return
     if(this.x === 599 && this.y === 601) return
     if(this.state === 'PAUSE') return
+    if(this.state === 'START') return
 
     switch(event.key) {
       case 'a':

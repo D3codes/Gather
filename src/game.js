@@ -153,8 +153,7 @@ export default class Game{
 				if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 429 && event.clientY < 454) {
 					this.state = 'PLAY'
-					this.player.x = 600
-					this.player.y = 600
+					this.player.state = 'PLAY'
 					this.engineSound(this.START)
 				}
 			} else if(this.state === 'UPGRADE') {
@@ -306,8 +305,7 @@ export default class Game{
 
 	update(){
 		if(this.state === 'START') {
-			this.player.x = 599
-			this.player.y = 601
+			this.player.state = 'START'
 		}
 		if(this.player.getInfo().health <= 0) {
 			this.engineSound(this.STOP)

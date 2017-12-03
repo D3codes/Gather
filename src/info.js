@@ -110,7 +110,7 @@ export default class Info {
       ctx.fillRect(75, 315, 50, 50)
       ctx.fillRect(140, 315, 50, 50)
       ctx.globalAlpha = 1.0
-      ctx.fillStyle = 'red'
+      ctx.fillStyle = 'black'
       ctx.font = '30px Verdana'
       ctx.fillText('2', 25, 350)
       ctx.fillText('2', 90, 350)
@@ -146,7 +146,7 @@ export default class Info {
       ctx.fillRect(75, 395, 50, 50)
       ctx.fillRect(140, 395, 50, 50)
       ctx.globalAlpha = 1.0
-      ctx.fillStyle = 'red'
+      ctx.fillStyle = 'black'
       ctx.font = '30px Verdana'
       ctx.fillText('3', 25, 430)
       ctx.fillText('3', 90, 430)
@@ -181,7 +181,7 @@ export default class Info {
       ctx.fillRect(75, 475, 50, 50)
       ctx.fillRect(140, 475, 50, 50)
       ctx.globalAlpha = 1.0
-      ctx.fillStyle = 'red'
+      ctx.fillStyle = 'black'
       ctx.font = '30px Verdana'
       ctx.fillText('4', 25, 510)
       ctx.fillText('4', 90, 510)
