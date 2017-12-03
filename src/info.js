@@ -28,8 +28,36 @@ export default class Info {
     ctx.fillRect(10, 110, (player.fuel*180)/player.maxFuel, 25)
 
     ctx.fillStyle = 'white'
-    ctx.fillText('Drill Strength: ' + player.drillStrength, 10, 155)
-    ctx.fillText('Hull Strength: ' + player.hullStrength, 10, 180)
+    var drill = 1
+    switch(player.drillStrength) {
+      case 25:
+        drill = 2
+        break
+      case 50:
+        drill = 3
+        break
+      case 100:
+        drill = 4
+        break
+      default:
+        drill = 1
+    }
+    ctx.fillText('Drill Level: ' + drill, 10, 155)
+    var hull = 1
+    switch(player.hullStrength) {
+      case 10:
+        hull = 2
+        break
+      case 25:
+        hull = 3
+        break
+      case 50:
+        hull = 4
+        break
+      default:
+        hull = 1
+    }
+    ctx.fillText('Hull Level: ' + hull, 10, 180)
 
     ctx.fillText('Inventory: ' + player.usedStorage + '/' + player.maxStorage, 10, 205)
 
@@ -82,6 +110,11 @@ export default class Info {
       ctx.fillRect(75, 315, 50, 50)
       ctx.fillRect(140, 315, 50, 50)
       ctx.globalAlpha = 1.0
+      ctx.fillStyle = 'red'
+      ctx.font = '30px Verdana'
+      ctx.fillText('2', 25, 350)
+      ctx.fillText('2', 90, 350)
+      ctx.fillText('2', 155, 350)
     }
 
     ctx.fillStyle = 'white'
@@ -113,6 +146,11 @@ export default class Info {
       ctx.fillRect(75, 395, 50, 50)
       ctx.fillRect(140, 395, 50, 50)
       ctx.globalAlpha = 1.0
+      ctx.fillStyle = 'red'
+      ctx.font = '30px Verdana'
+      ctx.fillText('3', 25, 430)
+      ctx.fillText('3', 90, 430)
+      ctx.fillText('3', 155, 430)
     }
 
     ctx.fillStyle = 'white'
@@ -143,9 +181,15 @@ export default class Info {
       ctx.fillRect(75, 475, 50, 50)
       ctx.fillRect(140, 475, 50, 50)
       ctx.globalAlpha = 1.0
+      ctx.fillStyle = 'red'
+      ctx.font = '30px Verdana'
+      ctx.fillText('4', 25, 510)
+      ctx.fillText('4', 90, 510)
+      ctx.fillText('4', 155, 510)
     }
 
     ctx.fillStyle = 'white'
+    ctx.font = '15px Verdana'
     ctx.fillText('Position: ' + (player.x-600) + ', ' + (-player.y+600), 10, 590)
   }
 }

@@ -74,8 +74,8 @@ export default class Popup {
         this.hullUpgradeCost = 10000
         break
       default:
-        this.storageUpgrade = undefined
-        this.storageUpgradeCost = undefined
+        this.hullUpgrade = undefined
+        this.hullUpgradeCost = undefined
     }
   }
 
@@ -127,6 +127,20 @@ export default class Popup {
 
       //Hull Strength Upgrade
       if(this.hullUpgrade) {
+        var hull = 1
+        switch(this.hullUpgrade) {
+          case 10:
+            hull = 2
+            break
+          case 25:
+            hull = 3
+            break
+          case 50:
+            hull = 4
+            break
+          default:
+            hull = 1
+        }
         ctx.fillStyle = 'red'
         ctx.fillRect(380, 300, 100, 25)
         ctx.fillStyle = 'white'
@@ -134,15 +148,29 @@ export default class Popup {
         ctx.fillText('Buy', 410, 320)
         ctx.fillStyle = 'black'
         ctx.font = '12px Verdana'
-        ctx.fillText('Upgrade Hull Strength to ' + this.hullUpgrade + ' for $' + this.hullUpgradeCost, 110, 320)
+        ctx.fillText('Upgrade Hull to Level ' + hull + ' for $' + this.hullUpgradeCost, 110, 320)
       } else {
         ctx.fillStyle = 'black'
         ctx.font = '12px Verdana'
-        ctx.fillText('Drill upgraded to maximum strength', 180, 320)
+        ctx.fillText('Hull upgraded to maximum strength', 180, 320)
       }
 
       //Drill Strength Upgrade
       if(this.drillUpgrade) {
+        var drill = 1
+        switch(this.drillUpgrade) {
+          case 25:
+            drill = 2
+            break
+          case 50:
+            drill = 3
+            break
+          case 100:
+            drill = 4
+            break
+          default:
+            drill = 1
+        }
         ctx.fillStyle = 'red'
         ctx.fillRect(380, 350, 100, 25)
         ctx.fillStyle = 'white'
@@ -150,7 +178,7 @@ export default class Popup {
         ctx.fillText('Buy', 410, 370)
         ctx.fillStyle = 'black'
         ctx.font = '12px Verdana'
-        ctx.fillText('Upgrade Drill Strength to ' + this.drillUpgrade + ' for $' + this.drillUpgradeCost, 110, 370)
+        ctx.fillText('Upgrade Drill to Level ' + drill + ' for $' + this.drillUpgradeCost, 110, 370)
       } else {
         ctx.fillStyle = 'black'
         ctx.font = '12px Verdana'

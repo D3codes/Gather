@@ -17,7 +17,7 @@ export default class Player {
     this.drillStrength = 10
 
     this.health = 100
-    this.hullStrength = 10
+    this.hullStrength = 5
     this.damageCounter = 0
 
     this.maxStorage = 10
@@ -37,7 +37,10 @@ export default class Player {
       alexandrite:0
     }
 
+    this.state = 'PLAY'
+
     this.handleKeyDown = this.handleKeyDown.bind(this)
+    this.update = this.update.bind(this)
     this.lastMove = 'right'
     window.addEventListener('keydown', this.handleKeyDown)
   }
@@ -49,6 +52,7 @@ export default class Player {
     this.drillStrength = 100
     this.hullStrength = 50
     this.maxStorage = 100
+    this.health = 100
   }
 
 	update(updateInfo) {
@@ -189,6 +193,7 @@ export default class Player {
     event.preventDefault()
     if(this.health <= 0) return
     if(this.x === 599 && this.y === 601) return
+    if(this.state === 'PAUSE') return
 
     switch(event.key) {
       case 'a':

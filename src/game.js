@@ -372,11 +372,13 @@ export default class Game{
 			case 'Escape':
 				if(this.state === 'PLAY') {
 					this.state = 'PAUSE'
+					this.player.state = 'PAUSE'
 					this.engineSound(this.STOP)
 				}
 				else if(this.state === 'PAUSE') {
 					this.engineSound(this.START)
 					this.state = 'PLAY'
+					this.player.state = 'PLAY'
 				} else if(this.state === 'UPGRADE') {
 					this.state = 'PLAY'
 					this.player.x = 600
