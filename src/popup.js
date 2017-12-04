@@ -289,25 +289,26 @@ export default class Popup {
       ctx.fillStyle = 'darkblue'
       ctx.fillText('Controls:', 110, 255)
       ctx.fillStyle = 'black'
-      ctx.fillText('WASD or Arrow Keys to move', 110, 275)
+      ctx.fillText('•WASD or Arrow Keys to move', 110, 275)
+      ctx.fillText('•Click on items to use them', 110, 295)
 
       ctx.font = '15px Verdana'
       ctx.fillStyle = 'darkblue'
-      ctx.fillText('Special Tiles:', 110, 295)
+      ctx.fillText('Special Tiles:', 110, 315)
       ctx.fillStyle = 'black'
-      ctx.drawImage(this.images.trade, 110, 305, 40, 40)
-      ctx.fillText('Trade:', 160, 320)
-      ctx.fillText('Sell Resources', 160, 340)
-      ctx.drawImage(this.images.upgrade, 110, 355, 40, 40)
-      ctx.fillText('Shop:', 160, 370)
-      ctx.fillText('Buy upgrades', 160, 390)
+      ctx.drawImage(this.images.trade, 110, 325, 40, 40)
+      ctx.fillText('Trade:', 160, 340)
+      ctx.fillText('Sell Resources', 160, 360)
+      ctx.drawImage(this.images.upgrade, 110, 375, 40, 40)
+      ctx.fillText('Shop:', 160, 390)
+      ctx.fillText('Buy upgrades', 160, 410)
 
-      ctx.drawImage(this.images.fuel, 285, 305, 40, 40)
-      ctx.fillText('Fuel:', 335, 320)
-      ctx.fillText('Refuel ship', 335, 340)
-      ctx.drawImage(this.images.repair, 285, 355, 40, 40)
-      ctx.fillText('Repair:', 335, 370)
-      ctx.fillText('Restore health', 335, 390)
+      ctx.drawImage(this.images.fuel, 285, 325, 40, 40)
+      ctx.fillText('Fuel:', 335, 340)
+      ctx.fillText('Refuel ship', 335, 360)
+      ctx.drawImage(this.images.repair, 285, 375, 40, 40)
+      ctx.fillText('Repair:', 335, 390)
+      ctx.fillText('Restore health', 335, 410)
 
 			ctx.fillStyle = 'darkblue'
 			ctx.fillRect(250, 420, 100, 25)
@@ -333,25 +334,32 @@ export default class Popup {
       ctx.fillStyle = 'darkblue'
       ctx.fillText('Controls:', 110, 255)
       ctx.fillStyle = 'black'
-      ctx.fillText('WASD or Arrow Keys to move', 110, 275)
+      ctx.fillText('•WASD or Arrow Keys to move', 110, 275)
+      ctx.fillText('•Click on items to use them', 110, 295)
 
       ctx.font = '15px Verdana'
       ctx.fillStyle = 'darkblue'
-      ctx.fillText('Special Tiles:', 110, 295)
+      ctx.fillText('Special Tiles:', 110, 315)
       ctx.fillStyle = 'black'
-      ctx.drawImage(this.images.trade, 110, 305, 40, 40)
-      ctx.fillText('Trade:', 160, 320)
-      ctx.fillText('Sell Resources', 160, 340)
-      ctx.drawImage(this.images.upgrade, 110, 355, 40, 40)
-      ctx.fillText('Shop:', 160, 370)
-      ctx.fillText('Buy upgrades', 160, 390)
+      ctx.drawImage(this.images.trade, 110, 325, 40, 40)
+      ctx.fillText('Trade:', 160, 340)
+      ctx.fillText('Sell Resources', 160, 360)
+      ctx.drawImage(this.images.upgrade, 110, 375, 40, 40)
+      ctx.fillText('Shop:', 160, 390)
+      ctx.fillText('Buy upgrades', 160, 410)
 
-      ctx.drawImage(this.images.fuel, 285, 305, 40, 40)
-      ctx.fillText('Fuel:', 335, 320)
-      ctx.fillText('Refuel ship', 335, 340)
-      ctx.drawImage(this.images.repair, 285, 355, 40, 40)
-      ctx.fillText('Repair:', 335, 370)
-      ctx.fillText('Restore health', 335, 390)
+      ctx.drawImage(this.images.fuel, 285, 325, 40, 40)
+      ctx.fillText('Fuel:', 335, 340)
+      ctx.fillText('Refuel ship', 335, 360)
+      ctx.drawImage(this.images.repair, 285, 375, 40, 40)
+      ctx.fillText('Repair:', 335, 390)
+      ctx.fillText('Restore health', 335, 410)
+
+      ctx.fillStyle = 'darkblue'
+      ctx.fillRect(250, 420, 100, 25)
+      ctx.fillStyle = 'white'
+      ctx.font = '20px Verdana'
+      ctx.fillText('Start', 273, 440)
 
       ctx.fillStyle = 'darkblue'
 			ctx.fillRect(310, 420, 100, 25)
