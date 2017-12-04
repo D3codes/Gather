@@ -94,7 +94,7 @@ export default class Game{
 		this.world=new World(this.images);
 		this.player = new Player(this.images.player, this.sounds)
 		this.info = new Info(this.images)
-		this.popup = new Popup()
+		this.popup = new Popup(this.images)
 
 		this.state = 'START'
 
@@ -121,6 +121,7 @@ export default class Game{
 		this.screenBufferCanvas.width = 800;
 		this.screenBufferCanvas.height = 600;
 		this.screenBufferCanvas.onmousedown = (event) => {
+			console.log(event.clientX, event.clientY)
 			if(this.state === 'GAME OVER') {
 				if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 429 && event.clientY < 454) {
@@ -137,13 +138,13 @@ export default class Game{
 					this.state = 'START'
 				}
 			} else if(this.state === 'PAUSE') {
-				if(event.clientX > 278 && event.clientX < 378 &&
-					event.clientY > 429 && event.clientY < 454) {
+				if(event.clientX > 218 && event.clientX < 318 &&
+					event.clientY > 448 && event.clientY < 472) {
 					this.state = 'PLAY'
 
 					this.engineSound(this.START)
-				} else if(event.clientX > 278 && event.clientX < 378 &&
-					event.clientY > 390 && event.clientY < 414){
+				} else if(event.clientX > 338 && event.clientX < 438 &&
+					event.clientY > 448 && event.clientY < 472){
 					this.world=new World(this.images);
 					this.player = new Player(this.images.player, this.sounds)
 					this.info = new Info(this.images)
@@ -151,7 +152,7 @@ export default class Game{
 				}
 			} else if(this.state === 'START') {
 				if(event.clientX > 278 && event.clientX < 378 &&
-					event.clientY > 429 && event.clientY < 454) {
+					event.clientY > 448 && event.clientY < 472) {
 					this.state = 'PLAY'
 					this.player.state = 'PLAY'
 					this.engineSound(this.START)
@@ -159,8 +160,8 @@ export default class Game{
 			} else if(this.state === 'UPGRADE') {
 				//increase fuel tank
 				let playerInfo = this.player.getInfo()
-				if(event.clientX > 409 && event.clientX < 509 &&
-					event.clientY > 280 && event.clientY < 303) {
+				if(event.clientX > 469 && event.clientX < 519 &&
+					event.clientY > 263 && event.clientY < 288) {
 						switch(playerInfo.maxFuel) {
 				      case 100:
 								if(playerInfo.money >= 1500) {
@@ -189,8 +190,8 @@ export default class Game{
 				}
 
 				//increase hull strength
-				if(event.clientX > 409 && event.clientX < 509 &&
-					event.clientY > 329 && event.clientY < 353) {
+				if(event.clientX > 469 && event.clientX < 519 &&
+					event.clientY > 311 && event.clientY < 335) {
 						switch(playerInfo.hullStrength) {
 				      case 5:
 								if(playerInfo.money >= 2000) {
@@ -219,8 +220,8 @@ export default class Game{
 				}
 
 				//increase drill Strength
-				if(event.clientX > 409 && event.clientX < 509 &&
-					event.clientY > 380 && event.clientY < 403) {
+				if(event.clientX > 469 && event.clientX < 519 &&
+					event.clientY > 351 && event.clientY < 376) {
 						switch(playerInfo.drillStrength) {
 				      case 10:
 								if(playerInfo.money >= 2000) {
@@ -249,8 +250,8 @@ export default class Game{
 				}
 
 				//increase inventory space
-				if(event.clientX > 409 && event.clientX < 509 &&
-					event.clientY > 430 && event.clientY < 453) {
+				if(event.clientX > 469 && event.clientX < 519 &&
+					event.clientY > 386 && event.clientY < 410) {
 						switch(playerInfo.maxStorage) {
 				      case 10:
 								if(playerInfo.money >= 1500) {

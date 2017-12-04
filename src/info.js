@@ -59,7 +59,7 @@ export default class Info {
     }
     ctx.fillText('Hull Level: ' + hull, 10, 180)
 
-    ctx.fillText('Inventory: ' + player.usedStorage + '/' + player.maxStorage, 10, 205)
+    ctx.fillText('Cargo: ' + player.usedStorage + '/' + player.maxStorage, 10, 205)
 
     ctx.fillStyle = 'white'
     ctx.font = '10px Verdana'
