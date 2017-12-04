@@ -1,6 +1,6 @@
 export default class Player {
-  constructor(image, sounds) {
-    this.image = image
+  constructor(images, sounds) {
+    this.images = images
     this.sounds = sounds
     this.soundCounter = 1
 
@@ -159,7 +159,21 @@ export default class Player {
     } else if(this.lastMove === 'left') {
       ctx.rotate(Math.PI)
     }
-    ctx.drawImage(this.image, -20, -20)
+    var p = 1
+    switch(this.drillStrength) {
+      case 25:
+        p = 2
+        break
+      case 50:
+        p = 3
+        break
+      case 100:
+        p = 4
+        break
+      default:
+        p = 1
+    }
+    ctx.drawImage(this.images['player'+p], -20, -20)
     ctx.restore()
   }
 

@@ -29,7 +29,10 @@ export default class Game{
 			fuel: new Image(),
 			repair: new Image(),
 			upgrade: new Image(),
-			player: new Image(),
+			player1: new Image(),
+			player2: new Image(),
+			player3: new Image(),
+			player4: new Image(),
 			bedrock: new Image()
 		}
 
@@ -51,7 +54,10 @@ export default class Game{
 		this.images.fuel.src = 'images/fuel.png'
 		this.images.repair.src = 'images/repair.png'
 		this.images.upgrade.src = 'images/upgrade.png'
-		this.images.player.src = 'images/player.png'
+		this.images.player1.src = 'images/player1.png'
+		this.images.player2.src = 'images/player2.png'
+		this.images.player3.src = 'images/player3.png'
+		this.images.player4.src = 'images/player4.png'
 		this.images.bedrock.src = 'images/bedrock.png'
 
 		this.sounds = {
@@ -75,8 +81,11 @@ export default class Game{
 			damage1: new Audio('damage.wav'),
       damage2: new Audio('damage.wav'),
       damage3: new Audio('damage.wav'),
-      damage4: new Audio('damage.wav')
+      damage4: new Audio('damage.wav'),
+			song: new Audio('ChipGather.wav')
 		}
+		this.sounds.song.loop = true
+		this.sounds.song.play()
 		this.sounds.engine1.loop = true
 		this.sounds.engine2.loop = true
 		this.sounds.engine3.loop = true
@@ -92,7 +101,7 @@ export default class Game{
 		this.STOP = false
 
 		this.world=new World(this.images);
-		this.player = new Player(this.images.player, this.sounds)
+		this.player = new Player(this.images, this.sounds)
 		this.info = new Info(this.images)
 		this.popup = new Popup(this.images)
 
@@ -126,14 +135,14 @@ export default class Game{
 				if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 429 && event.clientY < 454) {
 					this.world=new World(this.images);
-					this.player = new Player(this.images.player, this.sounds)
+					this.player = new Player(this.images, this.sounds)
 					this.info = new Info(this.images)
 					this.state = 'PLAY'
 					this.engineSound(this.START)
 				} else if(event.clientX > 278 && event.clientX < 378 &&
 					event.clientY > 390 && event.clientY < 414){
 					this.world=new World(this.images);
-					this.player = new Player(this.images.player, this.sounds)
+					this.player = new Player(this.images, this.sounds)
 					this.info = new Info(this.images)
 					this.state = 'START'
 				}
@@ -146,7 +155,7 @@ export default class Game{
 				} else if(event.clientX > 338 && event.clientX < 438 &&
 					event.clientY > 448 && event.clientY < 472){
 					this.world=new World(this.images);
-					this.player = new Player(this.images.player, this.sounds)
+					this.player = new Player(this.images, this.sounds)
 					this.info = new Info(this.images)
 					this.state = 'START'
 				}
@@ -389,9 +398,12 @@ export default class Game{
 				if(this.mute) {
 					this.mute = false
 					this.engineSound(this.START)
+					this.sounds.song.currentTime = 0
+					this.sounds.song.play()
 				} else {
 					this.mute = true
 					this.engineSound(this.STOP)
+					this.sounds.song.pause()
 				}
 				break
 
