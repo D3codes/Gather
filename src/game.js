@@ -190,6 +190,7 @@ export default class Game{
 								if(playerInfo.money >= 1500) {
 									this.player.maxFuel = 300
 									this.player.money -= 1500
+									this.player.fuel = this.player.maxFuel
 									this.sounds.upgrade.play()
 								}
 				        break
@@ -197,6 +198,7 @@ export default class Game{
 								if(playerInfo.money >= 2500) {
 									this.player.maxFuel = 750
 									this.player.money -= 2500
+									this.player.fuel = this.player.maxFuel
 									this.sounds.upgrade.play()
 								}
 				        break
@@ -204,6 +206,7 @@ export default class Game{
 								if(playerInfo.money >= 10000) {
 									this.player.maxFuel = 2000
 									this.player.money -= 10000
+									this.player.fuel = this.player.maxFuel
 									this.sounds.upgrade.play()
 								}
 				        break
@@ -220,6 +223,7 @@ export default class Game{
 								if(playerInfo.money >= 2000) {
 									this.player.hullStrength = 10
 									this.player.money -= 2000
+									this.player.health = 100
 									this.sounds.upgrade.play()
 								}
 				        break
@@ -227,6 +231,7 @@ export default class Game{
 								if(playerInfo.money >= 5000) {
 									this.player.hullStrength = 25
 									this.player.money -= 5000
+									this.player.health = 100
 									this.sounds.upgrade.play()
 								}
 				        break
@@ -234,6 +239,7 @@ export default class Game{
 								if(playerInfo.money >= 10000) {
 									this.player.hullStrength = 50
 									this.player.money -= 10000
+									this.player.health = 100
 									this.sounds.upgrade.play()
 								}
 				        break
