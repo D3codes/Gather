@@ -340,14 +340,22 @@ export default class Game{
 					event.clientY > 564 && event.clientY < 600 &&
 					this.player.items.smallExplosive > 0) {
 						this.player.items.smallExplosive = this.player.items.smallExplosive-1
-						//TODO: small explosion
+						for(let i = this.player.x-3; i <= this.player.x+3; i++) {
+							for(let j = this.player.y-3; j <= this.player.y+3; j++) {
+								this.world.grid[i][j].explode(this.player)
+							}
+						}
 				}
 
 				if(event.clientX > 684 && event.clientX < 714 &&
 					event.clientY > 564 && event.clientY < 600 &&
 					this.player.items.bigExplosive > 0) {
 						this.player.items.bigExplosive = this.player.items.bigExplosive-1
-						//TODO: big explosion
+						for(let i = this.player.x-5; i <= this.player.x+5; i++) {
+							for(let j = this.player.y-5; j <= this.player.y+5; j++) {
+								this.world.grid[i][j].explode(this.player)
+							}
+						}
 				}
 
 				if(event.clientX > 732 && event.clientX < 768 &&

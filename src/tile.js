@@ -33,6 +33,15 @@ export default class Tile{
 		this.rotation = 0
 	}
 
+	explode(player) {
+		if(this.type.split('_')[0] === 'ore' || this.type.split('_')[0] === 'wood'
+		|| this.type.split('_')[0] === 'rock') {
+			player.pickup(this.type)
+			this.type = 'empty'
+			this.rotation = 0
+		}
+	}
+
 	getInfo(){
 		var hardness = 0
 		switch(this.type.split('_')[1]) {

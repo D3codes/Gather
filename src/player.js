@@ -62,6 +62,17 @@ export default class Player {
     this.health = 100
   }
 
+  pickup(type) {
+    if(type === 'rock') return
+    if(this.usedStorage < this.maxStorage) {
+      this.playSound('pickup')
+      this.inventory[type.split('_')[1]]+=1;
+      this.usedStorage+=1;
+    } else {
+      this.playSound('destroy')
+    }
+  }
+
 	update(updateInfo) {
 		if(updateInfo.type==='trade'){
 			this.money+=updateInfo.income;
