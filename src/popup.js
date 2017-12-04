@@ -213,6 +213,11 @@ export default class Popup {
         ctx.fillText('N/A', 360, 375)
       }
 
+      ctx.drawImage(this.images.smallExplosion, 110, 400, 40, 40)
+      ctx.drawImage(this.images.bigExplosion, 160, 400, 40, 40)
+      ctx.drawImage(this.images.fuelTank, 210, 400, 40 ,40)
+      ctx.drawImage(this.images.teleporter, 260, 400, 40, 40)
+
       //Close
       ctx.fillStyle = 'red'
       ctx.fillRect(110, 160, 25, 25)

@@ -33,7 +33,11 @@ export default class Game{
 			player2: new Image(),
 			player3: new Image(),
 			player4: new Image(),
-			bedrock: new Image()
+			bedrock: new Image(),
+			bigExplosion: new Image(),
+			smallExplosion: new Image(),
+			teleporter: new Image(),
+			fuelTank: new Image()
 		}
 
 		this.images.empty.src = 'images/empty.png'
@@ -59,6 +63,10 @@ export default class Game{
 		this.images.player3.src = 'images/player3.png'
 		this.images.player4.src = 'images/player4.png'
 		this.images.bedrock.src = 'images/bedrock.png'
+		this.images.bigExplosion.src = 'images/bigexplosion.png'
+		this.images.smallExplosion.src= 'images/smallexplosion.png'
+		this.images.teleporter.src = 'images/teleporter.png'
+		this.images.fuelTank.src = 'images/fueltank.png'
 
 		this.sounds = {
 			ship: new Audio('ship.wav'),
