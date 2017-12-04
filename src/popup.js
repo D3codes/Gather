@@ -103,35 +103,35 @@ export default class Popup {
 		} else if (this.state === 'UPGRADE') {
 
       ctx.fillStyle = 'lightgrey'
-      ctx.fillRect(100, 150, 400, 300)
+      ctx.fillRect(100, 50, 400, 500)
 
       ctx.font = '20px Verdana'
       ctx.fillStyle = 'darkblue'
-      ctx.fillText('UPGRADE', 258, 170)
+      ctx.fillText('SHOP', 258, 70)
 
       ctx.font = '20px Verdana'
       ctx.fillStyle = 'darkblue'
-      ctx.fillText('Part', 110, 220)
-      ctx.fillText('Description', 170, 220)
-      ctx.fillText('Tier', 300, 220)
-      ctx.fillText('Cost', 360, 220)
+      ctx.fillText('Part', 110, 120)
+      ctx.fillText('Description', 170, 120)
+      ctx.fillText('Tier', 300, 120)
+      ctx.fillText('Cost', 360, 120)
 
       ctx.font = '15px Verdana'
       ctx.fillStyle = 'black'
-      ctx.fillText('Fuel', 110, 250)
-      ctx.fillText('Tank', 110, 265)
-      ctx.fillText('Go Farther', 170, 255)
+      ctx.fillText('Fuel', 110, 150)
+      ctx.fillText('Tank', 110, 165)
+      ctx.fillText('Go Farther', 170, 155)
       if(this.fuelUpgrade) {
-        ctx.fillText(this.fuelUpgrade, 300, 255)
-        ctx.fillText('$'+this.fuelUpgradeCost, 360, 255)
+        ctx.fillText(this.fuelUpgrade, 300, 155)
+        ctx.fillText('$'+this.fuelUpgradeCost, 360, 155)
         ctx.fillStyle = 'darkblue'
-        ctx.fillRect(440, 235, 50, 25)
+        ctx.fillRect(440, 135, 50, 25)
         ctx.fillStyle = 'white'
         ctx.font = '15px Verdana'
-        ctx.fillText('BUY', 449, 253)
+        ctx.fillText('BUY', 449, 153)
       } else {
-        ctx.fillText('MAX', 300, 255)
-        ctx.fillText('N/A', 360, 255)
+        ctx.fillText('MAX', 300, 155)
+        ctx.fillText('N/A', 360, 155)
       }
 
       var hull = 1
@@ -150,19 +150,19 @@ export default class Popup {
       }
       ctx.font = '15px Verdana'
       ctx.fillStyle = 'black'
-      ctx.fillText('Hull', 110, 300)
-      ctx.fillText('Less Damage', 170, 300)
+      ctx.fillText('Hull', 110, 200)
+      ctx.fillText('Less Damage', 170, 200)
       if(this.hullUpgrade) {
-        ctx.fillText('LV '+hull, 300, 300)
-        ctx.fillText('$'+this.hullUpgradeCost, 360, 300)
+        ctx.fillText('LV '+hull, 300, 200)
+        ctx.fillText('$'+this.hullUpgradeCost, 360, 200)
         ctx.fillStyle = 'darkblue'
-        ctx.fillRect(440, 282, 50, 25)
+        ctx.fillRect(440, 182, 50, 25)
         ctx.fillStyle = 'white'
         ctx.font = '15px Verdana'
-        ctx.fillText('BUY', 449, 300)
+        ctx.fillText('BUY', 449, 200)
       } else {
-        ctx.fillText('MAX', 300, 300)
-        ctx.fillText('N/A', 360, 300)
+        ctx.fillText('MAX', 300, 200)
+        ctx.fillText('N/A', 360, 200)
       }
 
       var drill = 1
@@ -181,49 +181,92 @@ export default class Popup {
       }
       ctx.font = '15px Verdana'
       ctx.fillStyle = 'black'
-      ctx.fillText('Drill', 110, 340)
-      ctx.fillText('Mine More', 170, 340)
+      ctx.fillText('Drill', 110, 240)
+      ctx.fillText('Mine More', 170, 240)
       if(this.drillUpgrade) {
-        ctx.fillText('LV '+drill, 300, 340)
-        ctx.fillText('$'+this.drillUpgradeCost, 360, 340)
+        ctx.fillText('LV '+drill, 300, 240)
+        ctx.fillText('$'+this.drillUpgradeCost, 360, 240)
         ctx.fillStyle = 'darkblue'
-        ctx.fillRect(440, 322, 50, 25)
+        ctx.fillRect(440, 222, 50, 25)
         ctx.fillStyle = 'white'
         ctx.font = '15px Verdana'
-        ctx.fillText('BUY', 449, 340)
+        ctx.fillText('BUY', 449, 240)
       } else {
-        ctx.fillText('MAX', 300, 340)
-        ctx.fillText('N/A', 360, 340)
+        ctx.fillText('MAX', 300, 240)
+        ctx.fillText('N/A', 360, 240)
       }
 
       ctx.font = '15px Verdana'
       ctx.fillStyle = 'black'
-      ctx.fillText('Cargo', 110, 375)
-      ctx.fillText('Carry More', 170, 375)
+      ctx.fillText('Cargo', 110, 275)
+      ctx.fillText('Carry More', 170, 275)
       if(this.storageUpgrade) {
-        ctx.fillText(this.storageUpgrade, 300, 375)
-        ctx.fillText('$'+this.storageUpgradeCost, 360, 375)
+        ctx.fillText(this.storageUpgrade, 300, 275)
+        ctx.fillText('$'+this.storageUpgradeCost, 360, 275)
         ctx.fillStyle = 'darkblue'
-        ctx.fillRect(440, 357, 50, 25)
+        ctx.fillRect(440, 257, 50, 25)
         ctx.fillStyle = 'white'
         ctx.font = '15px Verdana'
-        ctx.fillText('BUY', 449, 375)
+        ctx.fillText('BUY', 449, 275)
       } else {
-        ctx.fillText('MAX', 300, 375)
-        ctx.fillText('N/A', 360, 375)
+        ctx.fillText('MAX', 300, 275)
+        ctx.fillText('N/A', 360, 275)
       }
 
-      ctx.drawImage(this.images.smallExplosion, 110, 400, 40, 40)
-      ctx.drawImage(this.images.bigExplosion, 160, 400, 40, 40)
-      ctx.drawImage(this.images.fuelTank, 210, 400, 40 ,40)
-      ctx.drawImage(this.images.teleporter, 260, 400, 40, 40)
+      ctx.font = '20px Verdana'
+      ctx.fillStyle = 'darkblue'
+      ctx.fillText('Item', 110, 320)
+      ctx.fillText('Description', 200, 320)
+      ctx.fillText('Cost', 360, 320)
+
+      ctx.drawImage(this.images.smallExplosion, 110, 330, 40, 40)
+      ctx.font = '15px Verdana'
+      ctx.fillStyle = 'black'
+      ctx.fillText('Small Explosion', 200, 360)
+      ctx.fillText('$1000', 360, 360)
+
+      ctx.drawImage(this.images.bigExplosion, 110, 390, 40, 40)
+      ctx.fillText('Big Explosion', 200, 420)
+      ctx.fillText('$3000', 360, 420)
+
+      ctx.drawImage(this.images.fuelTank, 110, 450, 40 ,40)
+      ctx.fillText('Refuel', 200, 480)
+      ctx.fillText('$5000', 360, 480)
+
+      ctx.drawImage(this.images.teleporter, 110, 510, 40, 40)
+      ctx.fillText('Teleport Home', 200, 540)
+      ctx.fillText('$10000', 360, 540)
+
+      ctx.fillStyle = 'darkblue'
+      ctx.fillRect(440, 340, 50, 25)
+      ctx.fillStyle = 'white'
+      ctx.font = '15px Verdana'
+      ctx.fillText('BUY', 449, 358)
+
+      ctx.fillStyle = 'darkblue'
+      ctx.fillRect(440, 400, 50, 25)
+      ctx.fillStyle = 'white'
+      ctx.font = '15px Verdana'
+      ctx.fillText('BUY', 449, 418)
+
+      ctx.fillStyle = 'darkblue'
+      ctx.fillRect(440, 460, 50, 25)
+      ctx.fillStyle = 'white'
+      ctx.font = '15px Verdana'
+      ctx.fillText('BUY', 449, 478)
+
+      ctx.fillStyle = 'darkblue'
+      ctx.fillRect(440, 520, 50, 25)
+      ctx.fillStyle = 'white'
+      ctx.font = '15px Verdana'
+      ctx.fillText('BUY', 449, 538)
 
       //Close
       ctx.fillStyle = 'red'
-      ctx.fillRect(110, 160, 25, 25)
+      ctx.fillRect(110, 60, 25, 25)
       ctx.fillStyle = 'white'
       ctx.font = '20px Verdana'
-      ctx.fillText('X', 115, 180)
+      ctx.fillText('X', 115, 80)
 
     } else if (this.state === 'START') {
       ctx.fillStyle = 'lightgrey'

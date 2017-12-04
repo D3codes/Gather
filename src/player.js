@@ -37,6 +37,13 @@ export default class Player {
       alexandrite:0
     }
 
+    this.items = {
+      smallExplosive: 0,
+      bigExplosive: 0,
+      fuelTank: 0,
+      teleporter: 0
+    }
+
     this.state = 'PLAY'
 
     this.handleKeyDown = this.handleKeyDown.bind(this)
@@ -195,7 +202,8 @@ export default class Player {
       money:this.money,
       usedStorage:this.usedStorage,
       maxStorage:this.maxStorage,
-      hullStrength: this.hullStrength
+      hullStrength: this.hullStrength,
+      items: this.items
     };
   }
 

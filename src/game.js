@@ -178,7 +178,7 @@ export default class Game{
 				//increase fuel tank
 				let playerInfo = this.player.getInfo()
 				if(event.clientX > 469 && event.clientX < 519 &&
-					event.clientY > 263 && event.clientY < 288) {
+					event.clientY > 166 && event.clientY < 190) {
 						switch(playerInfo.maxFuel) {
 				      case 100:
 								if(playerInfo.money >= 1500) {
@@ -208,7 +208,7 @@ export default class Game{
 
 				//increase hull strength
 				if(event.clientX > 469 && event.clientX < 519 &&
-					event.clientY > 311 && event.clientY < 335) {
+					event.clientY > 213 && event.clientY < 236) {
 						switch(playerInfo.hullStrength) {
 				      case 5:
 								if(playerInfo.money >= 2000) {
@@ -238,7 +238,7 @@ export default class Game{
 
 				//increase drill Strength
 				if(event.clientX > 469 && event.clientX < 519 &&
-					event.clientY > 351 && event.clientY < 376) {
+					event.clientY > 253 && event.clientY < 277) {
 						switch(playerInfo.drillStrength) {
 				      case 10:
 								if(playerInfo.money >= 2000) {
@@ -268,7 +268,7 @@ export default class Game{
 
 				//increase inventory space
 				if(event.clientX > 469 && event.clientX < 519 &&
-					event.clientY > 386 && event.clientY < 410) {
+					event.clientY > 288 && event.clientY < 312) {
 						switch(playerInfo.maxStorage) {
 				      case 10:
 								if(playerInfo.money >= 1500) {
@@ -296,12 +296,74 @@ export default class Game{
 				    }
 				}
 
+				//buy small explosive
+				if(event.clientX > 469 && event.clientX < 519 &&
+					event.clientY > 371 && event.clientY < 395 &&
+					this.player.money >= 1000) {
+						this.player.money -= 1000
+						this.player.items.smallExplosive = this.player.items.smallExplosive+1
+					}
+
+				//buy large explosive
+				if(event.clientX > 469 && event.clientX < 519 &&
+					event.clientY > 431 && event.clientY < 455 &&
+					this.player.money >= 3000) {
+						this.player.money -= 3000
+						this.player.items.bigExplosive=this.player.items.bigExplosive+1
+					}
+
+				//buy gas can
+				if(event.clientX > 469 && event.clientX < 519 &&
+					event.clientY > 491 && event.clientY < 517 &&
+					this.player.money >= 5000) {
+						this.player.money -= 5000
+						this.player.items.fuelTank=this.player.items.fuelTank+1
+					}
+
+				//buy teleporter
+				if(event.clientX > 469 && event.clientX < 519 &&
+					event.clientY > 551 && event.clientY < 574 &&
+					this.player.money >= 10000) {
+						this.player.money -= 10000
+						this.player.items.teleporter=this.player.items.teleporter+1
+					}
+
 				//exit
 				if(event.clientX > 139 && event.clientX < 163 &&
-					event.clientY > 189 && event.clientY < 214) {
+					event.clientY > 90 && event.clientY < 116) {
 					this.player.x = 600
 					this.player.y = 600
 					this.state = 'PLAY'
+				}
+			} else {
+				if(event.clientX > 645 && event.clientX < 668 &&
+					event.clientY > 564 && event.clientY < 600 &&
+					this.player.items.smallExplosive > 0) {
+						this.player.items.smallExplosive = this.player.items.smallExplosive-1
+						//TODO: small explosion
+				}
+
+				if(event.clientX > 684 && event.clientX < 714 &&
+					event.clientY > 564 && event.clientY < 600 &&
+					this.player.items.bigExplosive > 0) {
+						this.player.items.bigExplosive = this.player.items.bigExplosive-1
+						//TODO: big explosion
+				}
+
+				if(event.clientX > 732 && event.clientX < 768 &&
+					event.clientY > 564 && event.clientY < 600 &&
+					this.player.items.fuelTank > 0) {
+						this.player.fuel = this.player.maxFuel
+						this.player.items.fuelTank = this.player.items.fuelTank-1
+						this.sounds.fuel.play()
+				}
+
+				if(event.clientX > 781 && event.clientX < 817 &&
+					event.clientY > 564 && event.clientY < 600 &&
+					this.player.items.teleporter > 0) {
+						this.player.x = 600
+						this.player.y = 600
+						this.player.items.teleporter = this.player.items.teleporter-1
 				}
 			}
 		}

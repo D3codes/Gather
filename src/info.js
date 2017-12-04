@@ -188,6 +188,34 @@ export default class Info {
       ctx.fillText('4', 155, 510)
     }
 
+    if(player.items.smallExplosive > 0) {
+      ctx.drawImage(this.images.smallExplosion, 5, 530)
+      ctx.font = '15px Verdana'
+      ctx.filLStyle = 'white'
+      ctx.fillText(player.items.smallExplosive, 25, 570)
+    }
+
+    if(player.items.bigExplosive > 0) {
+      ctx.drawImage(this.images.bigExplosion, 45, 530)
+      ctx.font = '15px Verdana'
+      ctx.filLStyle = 'white'
+      ctx.fillText(player.items.bigExplosive, 75, 570)
+    }
+
+    if(player.items.fuelTank > 0) {
+      ctx.drawImage(this.images.fuelTank, 100, 530)
+      ctx.font = '15px Verdana'
+      ctx.filLStyle = 'white'
+      ctx.fillText(player.items.fuelTank, 130, 570)
+    }
+
+    if(player.items.teleporter > 0) {
+      ctx.drawImage(this.images.teleporter, 150, 532)
+      ctx.font = '15px Verdana'
+      ctx.filLStyle = 'white'
+      ctx.fillText(player.items.teleporter, 175, 570)
+    }
+
     ctx.fillStyle = 'white'
     ctx.font = '15px Verdana'
     ctx.fillText('Position: ' + (player.x-600) + ', ' + (-player.y+600), 10, 590)
