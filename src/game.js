@@ -180,9 +180,9 @@ export default class Game{
 								}
 				        break
 				      case 300:
-								if(playerInfo.money >= 3500) {
+								if(playerInfo.money >= 2500) {
 									this.player.maxFuel = 750
-									this.player.money -= 3500
+									this.player.money -= 2500
 									this.sounds.upgrade.play()
 								}
 				        break
@@ -270,9 +270,9 @@ export default class Game{
 								}
 				        break
 				      case 30:
-								if(playerInfo.money >= 2500) {
+								if(playerInfo.money >= 3500) {
 									this.player.maxStorage = 60
-									this.player.money -= 2500
+									this.player.money -= 3500
 									this.sounds.upgrade.play()
 								}
 				        break

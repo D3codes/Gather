@@ -32,7 +32,7 @@ export default class Popup {
         break
       case 300:
         this.fuelUpgrade = 750
-        this.fuelUpgradeCost = 3500
+        this.fuelUpgradeCost = 2500
         break
       case 750:
         this.fuelUpgrade = 2000
@@ -50,7 +50,7 @@ export default class Popup {
         break
       case 30:
         this.storageUpgrade = 60
-        this.storageUpgradeCost = 2500
+        this.storageUpgradeCost = 3500
         break
       case 60:
         this.storageUpgrade = 100
