@@ -321,8 +321,8 @@ export default class Game{
 				//buy gas can
 				if(event.clientX > 469 && event.clientX < 519 &&
 					event.clientY > 491 && event.clientY < 517 &&
-					this.player.money >= 5000) {
-						this.player.money -= 5000
+					this.player.money >= (this.player.maxFuel*2)*2.5) {
+						this.player.money -= (this.player.maxFuel*2)*2.5
 						this.player.items.fuelTank=this.player.items.fuelTank+1
 					}
 

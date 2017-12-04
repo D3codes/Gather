@@ -2,10 +2,12 @@ export default class Popup {
   constructor(images) {
     this.state = 'PLAY'
     this.images = images
+    this.fuelTankPrice = 500
   }
 
   update(state, playerInfo) {
     this.state = state
+    this.fuelTankPrice = (playerInfo.maxFuel*2)*2.5
 
     switch(playerInfo.drillStrength) {
       case 10:
@@ -231,7 +233,7 @@ export default class Popup {
 
       ctx.drawImage(this.images.fuelTank, 110, 450, 40 ,40)
       ctx.fillText('Refuel', 200, 480)
-      ctx.fillText('$5000', 360, 480)
+      ctx.fillText('$'+this.fuelTankPrice, 360, 480)
 
       ctx.drawImage(this.images.teleporter, 110, 510, 40, 40)
       ctx.fillText('Teleport Home', 200, 540)
