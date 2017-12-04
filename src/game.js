@@ -61,11 +61,7 @@ export default class Game{
 		this.images.bedrock.src = 'images/bedrock.png'
 
 		this.sounds = {
-			engine1: new Audio('engine.wav'),
-			engine2: new Audio('engine.wav'),
-			engine3: new Audio('engine.wav'),
-			engine4: new Audio('engine.wav'),
-			engine5: new Audio('engine.wav'),
+			ship: new Audio('ship.wav'),
 			destroy1: new Audio('destroy.wav'),
       destroy2: new Audio('destroy.wav'),
       destroy3: new Audio('destroy.wav'),
@@ -86,16 +82,20 @@ export default class Game{
 		}
 		this.sounds.song.loop = true
 		this.sounds.song.play()
-		this.sounds.engine1.loop = true
-		this.sounds.engine2.loop = true
-		this.sounds.engine3.loop = true
-		this.sounds.engine4.loop = true
-		this.sounds.engine5.loop = true
-		this.sounds.engine1.volume = 0.05
-		this.sounds.engine2.volume = 0.05
-		this.sounds.engine3.volume = 0.05
-		this.sounds.engine4.volume = 0.05
-		this.sounds.engine5.volume = 0.05
+		this.sounds.ship.loop = true
+		this.sounds.ship.volume = 0.05
+		this.sounds.pickup1.volume = 0.25
+		this.sounds.pickup2.volume = 0.25
+		this.sounds.pickup3.volume = 0.25
+		this.sounds.pickup4.volume = 0.25
+		this.sounds.destroy1.volume = 0.25
+		this.sounds.destroy2.volume = 0.25
+		this.sounds.destroy3.volume = 0.25
+		this.sounds.destroy4.volume = 0.25
+		this.sounds.fuel.volume = 0.4
+		this.sounds.trade.volume = 0.4
+		this.sounds.upgrade.volume = 0.4
+		this.sounds.repair.volume = 0.4
 		this.mute = false
 		this.START = true
 		this.STOP = false
@@ -356,22 +356,10 @@ export default class Game{
 	engineSound(start) {
 		if(start) {
 			if(!this.mute) {
-				this.sounds.engine2.currentTime = 0.1
-				this.sounds.engine3.currentTime = 0.2
-				this.sounds.engine4.currentTime = 0.3
-				this.sounds.engine5.currentTime = 0.4
-				this.sounds.engine1.play()
-				this.sounds.engine2.play()
-				this.sounds.engine3.play()
-				this.sounds.engine4.play()
-				this.sounds.engine5.play()
+				this.sounds.ship.play()
 			}
 		} else {
-			this.sounds.engine1.pause()
-			this.sounds.engine2.pause()
-			this.sounds.engine3.pause()
-			this.sounds.engine4.pause()
-			this.sounds.engine5.pause()
+			this.sounds.ship.pause()
 		}
 	}
 
@@ -397,12 +385,13 @@ export default class Game{
 			case 'm':
 				if(this.mute) {
 					this.mute = false
-					this.engineSound(this.START)
+					this.sounds.ship.currentTime = 0
 					this.sounds.song.currentTime = 0
+					this.sounds.ship.play()
 					this.sounds.song.play()
 				} else {
 					this.mute = true
-					this.engineSound(this.STOP)
+					this.sounds.ship.pause()
 					this.sounds.song.pause()
 				}
 				break
