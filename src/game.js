@@ -86,7 +86,10 @@ export default class Game{
       damage2: new Audio('damage.wav'),
       damage3: new Audio('damage.wav'),
       damage4: new Audio('damage.wav'),
-			song: new Audio('ChipGather.wav')
+			song: new Audio('ChipGather.wav'),
+			teleport: new Audio('teleport.wav'),
+			smallExplosion: new Audio('smallExplosion.wav'),
+			bigExplosion: new Audio('bigexplosion.wav')
 		}
 		this.sounds.song.loop = true
 		this.sounds.song.play()
@@ -104,6 +107,9 @@ export default class Game{
 		this.sounds.trade.volume = 0.4
 		this.sounds.upgrade.volume = 0.4
 		this.sounds.repair.volume = 0.4
+		this.sounds.teleport.volume = 0.4
+		this.sounds.bigExplosion.volume = 0.4
+		this.sounds.smallExplosion.volume = 0.4
 		this.mute = false
 		this.START = true
 		this.STOP = false
@@ -340,6 +346,7 @@ export default class Game{
 					event.clientY > 564 && event.clientY < 600 &&
 					this.player.items.smallExplosive > 0) {
 						this.player.items.smallExplosive = this.player.items.smallExplosive-1
+						this.sounds.smallExplosion.play()
 						for(let i = this.player.x-3; i <= this.player.x+3; i++) {
 							for(let j = this.player.y-3; j <= this.player.y+3; j++) {
 								this.world.grid[i][j].explode(this.player)
@@ -351,6 +358,7 @@ export default class Game{
 					event.clientY > 564 && event.clientY < 600 &&
 					this.player.items.bigExplosive > 0) {
 						this.player.items.bigExplosive = this.player.items.bigExplosive-1
+						this.sounds.bigExplosion.play()
 						for(let i = this.player.x-5; i <= this.player.x+5; i++) {
 							for(let j = this.player.y-5; j <= this.player.y+5; j++) {
 								this.world.grid[i][j].explode(this.player)
@@ -372,6 +380,7 @@ export default class Game{
 						this.player.x = 600
 						this.player.y = 600
 						this.player.items.teleporter = this.player.items.teleporter-1
+						this.sounds.teleport.play()
 				}
 			}
 		}
