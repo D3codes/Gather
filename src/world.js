@@ -57,8 +57,20 @@ export default class World{
 		this.grid[599][601].setType('upgrade')
 
 		//bind class functions
+		this.getWorldString.bind(this);
 		this.update.bind(this);
 		this.render.bind(this);
+	}
+	
+	getWorldString(){
+		let str='';
+		for (let x=0;x<1200;x++){
+			for (let y=0;y<1200;y++){
+				str+=this.grid[x][y].getInfo().type + ',';
+			}
+			str+='\n';
+		}
+		return str;
 	}
 
 	sellItems(inventory){
