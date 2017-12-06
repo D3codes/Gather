@@ -356,12 +356,6 @@ export default class Popup {
       ctx.fillText('Restore health', 335, 410)
 
       ctx.fillStyle = 'darkblue'
-      ctx.fillRect(250, 420, 100, 25)
-      ctx.fillStyle = 'white'
-      ctx.font = '20px Verdana'
-      ctx.fillText('Start', 273, 440)
-
-      ctx.fillStyle = 'darkblue'
 			ctx.fillRect(310, 420, 100, 25)
 			ctx.fillStyle = 'white'
 			ctx.font = '20px Verdana'
