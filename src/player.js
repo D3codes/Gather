@@ -54,11 +54,11 @@ export default class Player {
 
   maxOut() {
     this.money = 9999999
-    this.fuel = 2000
-    this.maxFuel = 2000
-    this.drillStrength = 100
-    this.hullStrength = 50
-    this.maxStorage = 100
+    this.fuel = 100
+    this.maxFuel = 100
+    this.drillStrength = 10
+    this.hullStrength = 5
+    this.maxStorage = 10
     this.health = 100
   }
 
