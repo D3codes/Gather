@@ -196,6 +196,7 @@ export default class Player {
   }
 
   playSound(sound) {
+    if(!this.sounds) return
     this.soundCounter++
     if(this.soundCounter >= 5) this.soundCounter = 1
     this.sounds[sound+this.soundCounter].play()
